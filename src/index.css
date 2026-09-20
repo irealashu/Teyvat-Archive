@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #090d16;
+  color: #e2e8f0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* THEMES: Whitenight (light) & Evernight (dark) */
+html[data-theme='evernight'] body,
+html:not([data-theme='whitenight']) body {
+  background-color: #090d16;
+  color: #e2e8f0;
+}
+
+html[data-theme='whitenight'] body,
+html.light-theme body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* =========================================================================
+   WHITENIGHT (LIGHT THEME) COMPREHENSIVE CONTRAST & VISIBILITY OVERRIDES
+   ========================================================================= */
+
+/* 1. Container & Card Backgrounds */
+html[data-theme='whitenight'] .bg-slate-950,
+html[data-theme='whitenight'] .bg-slate-950\/95,
+html[data-theme='whitenight'] .bg-slate-950\/90,
+html[data-theme='whitenight'] .bg-slate-950\/80,
+html[data-theme='whitenight'] .bg-slate-900,
+html[data-theme='whitenight'] .bg-slate-900\/95,
+html[data-theme='whitenight'] .bg-slate-900\/90,
+html[data-theme='whitenight'] .bg-slate-900\/80 {
+  background-color: #ffffff !important;
+}
+
+/* Sub-panels, stat boxes, skill cards, constellation cards, filter pills */
+html[data-theme='whitenight'] .bg-slate-950\/70,
+html[data-theme='whitenight'] .bg-slate-950\/60,
+html[data-theme='whitenight'] .bg-slate-950\/50,
+html[data-theme='whitenight'] .bg-slate-950\/40,
+html[data-theme='whitenight'] .bg-slate-900\/70,
+html[data-theme='whitenight'] .bg-slate-900\/60,
+html[data-theme='whitenight'] .bg-slate-900\/50,
+html[data-theme='whitenight'] .bg-slate-900\/40 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Tertiary elements, neutral badges, icon buttons */
+html[data-theme='whitenight'] .bg-slate-800,
+html[data-theme='whitenight'] .bg-slate-800\/80,
+html[data-theme='whitenight'] .bg-slate-800\/60,
+html[data-theme='whitenight'] .bg-slate-800\/50 {
+  background-color: #e2e8f0 !important;
+}
+
+/* 2. Borders & Dividers */
+html[data-theme='whitenight'] .border-slate-800,
+html[data-theme='whitenight'] .border-slate-800\/80,
+html[data-theme='whitenight'] .border-slate-800\/60,
+html[data-theme='whitenight'] .border-slate-800\/40 {
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme='whitenight'] .border-slate-700,
+html[data-theme='whitenight'] .border-slate-700\/80,
+html[data-theme='whitenight'] .border-slate-700\/60 {
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme='whitenight'] .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+html[data-theme='whitenight'] .divide-slate-700 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* 3. Text Contrast Overrides for Light Backgrounds */
+html[data-theme='whitenight'] .text-slate-100 {
+  color: #0f172a !important;
+}
+
+html[data-theme='whitenight'] .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html[data-theme='whitenight'] .text-slate-300 {
+  color: #334155 !important;
+}
+
+html[data-theme='whitenight'] .text-slate-400 {
+  color: #475569 !important;
+}
+
+html[data-theme='whitenight'] .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Fix text-white in headings, titles and cards that turned light */
+html[data-theme='whitenight'] h1.text-white,
+html[data-theme='whitenight'] h2.text-white,
+html[data-theme='whitenight'] h3.text-white,
+html[data-theme='whitenight'] h4.text-white,
+html[data-theme='whitenight'] .font-display.text-white {
+  color: #0f172a !important;
+}
+
+/* 4. Amber, Gold & Accent Color Readability on Light Backgrounds */
+/* In dark mode, light yellow is readable on dark slate. In light mode, it must be deep bronze/amber. */
+html[data-theme='whitenight'] .text-amber-200,
+html[data-theme='whitenight'] .text-amber-300 {
+  color: #b45309 !important; /* amber-700, high contrast */
+}
+
+html[data-theme='whitenight'] .text-amber-400 {
+  color: #92400e !important; /* amber-800 */
+}
+
+html[data-theme='whitenight'] .text-yellow-200,
+html[data-theme='whitenight'] .text-yellow-300,
+html[data-theme='whitenight'] .text-yellow-400 {
+  color: #a16207 !important; /* yellow-700 */
+}
+
+/* Stat & Specialty Colors in Light Mode */
+html[data-theme='whitenight'] .text-emerald-300,
+html[data-theme='whitenight'] .text-emerald-400 {
+  color: #047857 !important; /* emerald-700 */
+}
+
+html[data-theme='whitenight'] .text-red-300,
+html[data-theme='whitenight'] .text-red-400,
+html[data-theme='whitenight'] .text-rose-300,
+html[data-theme='whitenight'] .text-rose-400 {
+  color: #b91c1c !important; /* red-700 */
+}
+
+html[data-theme='whitenight'] .text-sky-300,
+html[data-theme='whitenight'] .text-sky-400,
+html[data-theme='whitenight'] .text-blue-300,
+html[data-theme='whitenight'] .text-blue-400 {
+  color: #0369a1 !important; /* sky-700 */
+}
+
+html[data-theme='whitenight'] .text-purple-300,
+html[data-theme='whitenight'] .text-purple-400 {
+  color: #7e22ce !important; /* purple-700 */
+}
+
+html[data-theme='whitenight'] .text-cyan-200,
+html[data-theme='whitenight'] .text-cyan-300,
+html[data-theme='whitenight'] .text-teal-300,
+html[data-theme='whitenight'] .text-teal-400 {
+  color: #0f766e !important; /* teal-700 */
+}
+
+html[data-theme='whitenight'] .text-lime-300,
+html[data-theme='whitenight'] .text-lime-400 {
+  color: #3f6212 !important; /* lime-800 */
+}
+
+/* 5. Inputs, Selects & Textareas */
+html[data-theme='whitenight'] input:not([type="checkbox"]):not([type="radio"]),
+html[data-theme='whitenight'] select,
+html[data-theme='whitenight'] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme='whitenight'] input::placeholder,
+html[data-theme='whitenight'] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html[data-theme='whitenight'] select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* 6. Hero Banner & Gradient Containers */
+html[data-theme='whitenight'] .from-slate-900\/90.via-slate-900\/60.to-slate-950,
+html[data-theme='whitenight'] .bg-gradient-to-r.from-slate-900\/90 {
+  background-image: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Gradient Stops Override for light mode modal headers & rarity banners */
+html[data-theme='whitenight'] .via-slate-900\/90 {
+  --tw-gradient-via: rgba(241, 245, 249, 0.95) !important;
+}
+
+html[data-theme='whitenight'] .to-slate-950 {
+  --tw-gradient-to: #ffffff !important;
+}
+
+html[data-theme='whitenight'] .from-slate-950 {
+  --tw-gradient-from: #ffffff !important;
+}
+
+/* Modals Card Shadow in Light Mode */
+html[data-theme='whitenight'] .shadow-2xl {
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15) !important;
+}
+
+html[data-theme='whitenight'] ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 119, 6, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 6, 0.7);
+}
