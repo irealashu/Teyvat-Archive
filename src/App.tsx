@@ -53,23 +53,28 @@ export default function App() {
     }
   });
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
-  const [adminPasscode, setAdminPasscode] = useState<string>(() => {
-    try {
-      return localStorage.getItem('teyvat_curator_passcode') || 'genshin123';
-    } catch {
-      return 'genshin123';
-    }
-  });
 
-  const handleUnlockAdmin = (passcode: string): boolean => {
-    if (passcode === adminPasscode) {
-      setIsAdmin(true);
-      try {
-        sessionStorage.setItem('teyvat_curator_auth', 'true');
-      } catch {}
-      return true;
+  const handleUnlockAdmin = async (passcode: string): Promise<{ success: boolean; message?: string }> => {
+    try {
+      const response = await fetch('/api/auth/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setIsAdmin(true);
+        try {
+          sessionStorage.setItem('teyvat_curator_auth', 'true');
+        } catch {}
+        return { success: true, message: data.message };
+      }
+      return { success: false, message: data.message || 'Incorrect passcode. Access denied.' };
+    } catch (err) {
+      console.error('Authentication verification error:', err);
+      return { success: false, message: 'Server connection error during authentication.' };
     }
-    return false;
   };
 
   const handleLockAdmin = () => {
@@ -79,15 +84,23 @@ export default function App() {
     } catch {}
   };
 
-  const handleChangePasscode = (oldPass: string, newPass: string): boolean => {
-    if (oldPass === adminPasscode) {
-      setAdminPasscode(newPass);
-      try {
-        localStorage.setItem('teyvat_curator_passcode', newPass);
-      } catch {}
-      return true;
+  const handleChangePasscode = async (oldPass: string, newPass: string): Promise<{ success: boolean; message?: string }> => {
+    try {
+      const response = await fetch('/api/auth/change-passcode', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ oldPasscode: oldPass, newPasscode: newPass }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        return { success: true, message: data.message };
+      }
+      return { success: false, message: data.message || 'Current passcode verification failed.' };
+    } catch (err) {
+      console.error('Password change error:', err);
+      return { success: false, message: 'Failed to update passcode on server.' };
     }
-    return false;
   };
 
   // Filter States

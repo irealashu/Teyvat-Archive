@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Lock, Unlock, KeyRound, ShieldCheck, X, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Lock, Unlock, KeyRound, ShieldCheck, X, Eye, EyeOff, AlertCircle, CheckCircle2, Loader2, Server } from 'lucide-react';
 
 interface AdminAuthModalProps {
   isOpen: boolean;
   onClose: () => void;
   isAdmin: boolean;
-  onUnlock: (passcode: string) => boolean;
+  onUnlock: (passcode: string) => Promise<{ success: boolean; message?: string }>;
   onLock: () => void;
-  onChangePasscode: (oldPass: string, newPass: string) => boolean;
+  onChangePasscode: (oldPass: string, newPass: string) => Promise<{ success: boolean; message?: string }>;
 }
 
 export function AdminAuthModal({
@@ -24,6 +24,7 @@ export function AdminAuthModal({
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Tab for change passcode
   const [isChangingPass, setIsChangingPass] = useState(false);
@@ -31,7 +32,7 @@ export function AdminAuthModal({
   const [newPasscode, setNewPasscode] = useState('');
   const [confirmPasscode, setConfirmPasscode] = useState('');
 
-  const handleUnlockSubmit = (e: React.FormEvent) => {
+  const handleUnlockSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
@@ -41,20 +42,27 @@ export function AdminAuthModal({
       return;
     }
 
-    const success = onUnlock(inputPasscode.trim());
-    if (success) {
-      setSuccessMessage('Curator privileges granted! Edit & management unlocked.');
-      setInputPasscode('');
-      setTimeout(() => {
-        setSuccessMessage('');
-        onClose();
-      }, 1000);
-    } else {
-      setErrorMessage('Incorrect passcode. Access denied.');
+    setIsLoading(true);
+    try {
+      const res = await onUnlock(inputPasscode.trim());
+      if (res.success) {
+        setSuccessMessage('Curator privileges granted! Edit & management unlocked.');
+        setInputPasscode('');
+        setTimeout(() => {
+          setSuccessMessage('');
+          onClose();
+        }, 1000);
+      } else {
+        setErrorMessage(res.message || 'Incorrect passcode. Access denied.');
+      }
+    } catch {
+      setErrorMessage('Authentication request failed. Please verify server connection.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleChangePassSubmit = (e: React.FormEvent) => {
+  const handleChangePassSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
@@ -69,18 +77,25 @@ export function AdminAuthModal({
       return;
     }
 
-    const success = onChangePasscode(oldPasscode, newPasscode);
-    if (success) {
-      setSuccessMessage('Admin passcode updated successfully!');
-      setOldPasscode('');
-      setNewPasscode('');
-      setConfirmPasscode('');
-      setTimeout(() => {
-        setIsChangingPass(false);
-        setSuccessMessage('');
-      }, 1500);
-    } else {
-      setErrorMessage('Current passcode verification failed.');
+    setIsLoading(true);
+    try {
+      const res = await onChangePasscode(oldPasscode, newPasscode);
+      if (res.success) {
+        setSuccessMessage(res.message || 'Admin passcode updated successfully on server!');
+        setOldPasscode('');
+        setNewPasscode('');
+        setConfirmPasscode('');
+        setTimeout(() => {
+          setIsChangingPass(false);
+          setSuccessMessage('');
+        }, 1500);
+      } else {
+        setErrorMessage(res.message || 'Current passcode verification failed.');
+      }
+    } catch {
+      setErrorMessage('Failed to update passcode on server.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -230,9 +245,11 @@ export function AdminAuthModal({
 
                   <button
                     type="submit"
-                    className="w-full py-2 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow transition-all active:scale-95"
+                    disabled={isLoading}
+                    className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-xs shadow transition-all active:scale-95"
                   >
-                    Save New Passcode
+                    {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : null}
+                    <span>Save New Passcode</span>
                   </button>
                 </form>
               )}
@@ -240,9 +257,14 @@ export function AdminAuthModal({
           ) : (
             /* Enter Passcode Form */
             <form onSubmit={handleUnlockSubmit} className="space-y-4">
-              <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-[11px] text-amber-300 leading-relaxed">
-                <p className="font-semibold mb-0.5">🔒 Protected Archive Architecture</p>
-                To prevent random visitors from altering or deleting entries, modifications require administrator authorization.
+              <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-[11px] text-amber-300 leading-relaxed space-y-1">
+                <p className="font-semibold flex items-center gap-1.5">
+                  <Server className="w-3.5 h-3.5 text-amber-400" />
+                  Secure Backend Authentication
+                </p>
+                <p className="text-amber-300/80">
+                  Password verification is executed securely on the server environment. No secrets or passcodes are exposed in public client bundles or repository files.
+                </p>
               </div>
 
               <div>
@@ -268,8 +290,8 @@ export function AdminAuthModal({
                   </button>
                 </div>
                 <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500">
-                  <span>Enter secret curator passcode</span>
-                  <span className="text-slate-600">Private access only</span>
+                  <span>Server-verified curator authentication</span>
+                  <span className="text-slate-600">Secure API verification</span>
                 </div>
               </div>
 
@@ -284,10 +306,15 @@ export function AdminAuthModal({
                 <button
                   type="submit"
                   id="admin-passcode-submit-btn"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-xl shadow-md transition-all active:scale-95"
+                  disabled={isLoading}
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 disabled:opacity-60 rounded-xl shadow-md transition-all active:scale-95"
                 >
-                  <Unlock className="w-3.5 h-3.5" />
-                  <span>Unlock Admin</span>
+                  {isLoading ? (
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  ) : (
+                    <Unlock className="w-3.5 h-3.5" />
+                  )}
+                  <span>{isLoading ? 'Verifying...' : 'Unlock Admin'}</span>
                 </button>
               </div>
             </form>
