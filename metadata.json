@@ -1,6 +1,6 @@
 {
-  "name": "Teyvat Archive - Genshin Impact Compendium",
-  "description": "Comprehensive Genshin Impact database and manager featuring characters, weapons, artifacts, and nations of Teyvat with live editing and customization.",
+  "name": "The Damselette Archive",
+  "description": "The Damselette Archive — A comprehensive Genshin Impact database featuring complete character archives, weapon arsenals, reliquary artifacts, and literature books.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

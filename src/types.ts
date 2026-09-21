@@ -1,4 +1,4 @@
-export type ElementType = 'Pyro' | 'Hydro' | 'Anemo' | 'Electro' | 'Dendro' | 'Cryo' | 'Geo' | 'Adaptive' | 'None';
+export type ElementType = 'Pyro' | 'Hydro' | 'Anemo' | 'Electro' | 'Dendro' | 'Cryo' | 'Geo' | 'Adaptive' | 'Multi' | 'None';
 
 export type WeaponCategory = 'Sword' | 'Claymore' | 'Polearm' | 'Bow' | 'Catalyst';
 
@@ -146,4 +146,93 @@ export interface RegionInfo {
   isCustom?: boolean;
 }
 
-export type ActiveTab = 'characters' | 'weapons' | 'artifacts' | 'regions' | 'comparison';
+export interface BookVolume {
+  id: string;
+  volume: number;
+  title: string;
+  story: string;
+}
+
+export interface Book {
+  id: string;
+  name: string;
+  iconUrl: string;
+  rarity: Rarity;
+  description: string;
+  volumes?: BookVolume[];
+}
+
+export type ActiveTab = 'avatar' | 'weapon' | 'reliquary' | 'book';
+
+export interface PlayerShowcaseProfile {
+  uid: string;
+  nickname: string;
+  level: number;
+  worldLevel: number;
+  signature: string;
+  achievementCount: number;
+  abyssFloor: string;
+  avatarIconUrl: string;
+  nameCardUrl: string;
+  serverRegion: string;
+}
+
+export interface ShowcaseArtifact {
+  id: string;
+  name: string;
+  iconUrl: string;
+  rarity: number;
+  slot: 'Flower' | 'Plume' | 'Sands' | 'Goblet' | 'Circlet';
+  setName: string;
+  mainStat: { name: string; value: string };
+  subStats: Array<{ name: string; value: string }>;
+}
+
+export interface ShowcaseWeapon {
+  name: string;
+  iconUrl: string;
+  rarity: number;
+  level: number;
+  refinement: number;
+  baseAtk: number;
+  subStatName: string;
+  subStatValue: string;
+}
+
+export interface ShowcaseCharacter {
+  id: string;
+  name: string;
+  element: ElementType;
+  level: number;
+  friendship: number;
+  constellation: number;
+  iconUrl: string;
+  splashUrl?: string;
+  weapon: ShowcaseWeapon;
+  artifacts: ShowcaseArtifact[];
+  activeSetBonuses: Array<{ name: string; pieces: number }>;
+  stats: {
+    maxHp: number;
+    baseHp?: number;
+    bonusHp?: number;
+    atk: number;
+    baseAtk?: number;
+    bonusAtk?: number;
+    def: number;
+    baseDef?: number;
+    bonusDef?: number;
+    elementalMastery: number;
+    critRate: number;
+    critDmg: number;
+    energyRecharge: number;
+    dmgBonusType: string;
+    dmgBonusValue: number;
+  };
+  talents: Array<{
+    name: string;
+    type: string;
+    level: number;
+    boosted?: boolean;
+    iconUrl?: string;
+  }>;
+}
