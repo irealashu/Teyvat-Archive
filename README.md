@@ -1,4 +1,4 @@
-# The Damselette Archive 🕊️
+# The Damselette Archive
 
 A high-performance Genshin Impact lore, literature, and game records database. Named in honor of Columbina (The Damselette), this archive is powered by live data from **Project Amber** paired with local static compendiums.
 
