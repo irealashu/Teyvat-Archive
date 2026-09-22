@@ -335,12 +335,11 @@ export const ArchiveAvatarView: React.FC = () => {
                   <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/30 p-1 flex-shrink-0 shadow-xl overflow-hidden group">
                     <img
                       src={
-                        detailData?.icon
-                          ? detailData.icon.startsWith('http')
-                            ? detailData.icon
-                            : `https://gi.yatta.moe/assets/UI/${detailData.icon}.png`
-                          : activeChar?.icon || localChar?.iconUrl || 'https://enka.network/ui/UI_AvatarIcon_Paimon.png'
+                        detailData?.filename
+                          ? `/assets/${detailData.filename}.png`
+                          : (detailData?.icon || activeChar?.icon || localChar?.iconUrl || 'https://enka.network/ui/UI_AvatarIcon_Paimon.png')
                       }
+                      loading="lazy"
                       alt={detailData?.name || activeChar?.name || localChar?.name}
                       className="w-full h-full object-cover rounded-xl"
                       onError={(e) => {

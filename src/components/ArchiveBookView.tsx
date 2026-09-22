@@ -1,77 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Book, BookVolume } from '../types';
+import { Book } from '../types';
 import { COMPREHENSIVE_BOOKS } from '../data/books';
-import { fetchAmberList, fetchAmberDetail, AmberListItem } from '../services/amberService';
+import BOOKS from '../data/books.json';
 import { Search, BookOpen, Sparkles, X, ChevronRight, Bookmark, Loader2, Star } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
 
 export const ArchiveBookView: React.FC = () => {
-  const [items, setItems] = useState<AmberListItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(BOOKS);
+  const [loading, setLoading] = useState(false);
   const [detailLoading, setDetailLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [selectedBook, setSelectedBook] = useState<any>(BOOKS[0]);
   const [activeVolumeIndex, setActiveVolumeIndex] = useState<number>(0);
   const [selectedRarity, setSelectedRarity] = useState<number | 'All'>('All');
   const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rarity-desc' | 'rarity-asc'>('name-asc');
 
   useEffect(() => {
-    let isMounted = true;
-    async function loadBooks() {
-      setLoading(true);
-      const list = await fetchAmberList('book');
-      if (isMounted) {
-        if (list && list.length > 0) {
-          setItems(list);
-          // Auto select first book
-          handleSelectBook(list[0].id);
-        } else {
-          setItems(
-            COMPREHENSIVE_BOOKS.map((b) => ({
-              id: b.id,
-              name: b.name,
-              icon: b.iconUrl,
-              rank: b.rarity,
-              description: b.description,
-            }))
-          );
-          setSelectedBook(COMPREHENSIVE_BOOKS[0]);
-        }
-        setLoading(false);
-      }
-    }
-    loadBooks();
-    return () => {
-      isMounted = false;
-    };
+      setItems(BOOKS);
   }, []);
 
   const handleSelectBook = async (id: string | number) => {
     setDetailLoading(true);
-    const remoteDetail = await fetchAmberDetail('book', id);
-    if (remoteDetail) {
-      setSelectedBook({
-        id: String(remoteDetail.id),
-        name: remoteDetail.name,
-        iconUrl: remoteDetail.iconUrl || remoteDetail.icon,
-        rarity: (remoteDetail.rank || remoteDetail.rarity || 4) as any,
-        description: remoteDetail.description || 'An ancient manuscript stored in Teyvat\'s archives.',
-        volumes: remoteDetail.volumes && remoteDetail.volumes.length > 0 ? remoteDetail.volumes : [
-          {
-            id: 'vol-1',
-            volume: 1,
-            title: remoteDetail.name || 'Volume I',
-            story: remoteDetail.description || 'No volume story recorded.',
-          }
-        ],
-      });
+    
+    // In static mode, look up details from our local pre-compiled data
+    const book = BOOKS.find(b => b.id == id || b.name.toLowerCase().includes(id.toString().toLowerCase()));
+    
+    if (book) {
+      setSelectedBook(book);
       setActiveVolumeIndex(0);
     } else {
-      const local = COMPREHENSIVE_BOOKS.find((b) => b.id === id || b.name.toLowerCase().includes(id.toString().toLowerCase()));
-      if (local) {
-        setSelectedBook(local);
-        setActiveVolumeIndex(0);
-      }
+       const local = COMPREHENSIVE_BOOKS.find((b) => b.id === id || b.name.toLowerCase().includes(id.toString().toLowerCase()));
+       if (local) {
+         setSelectedBook(local);
+         setActiveVolumeIndex(0);
+       }
     }
     setDetailLoading(false);
   };
@@ -269,7 +231,7 @@ export const ArchiveBookView: React.FC = () => {
                   <span className="text-[10px] text-slate-500 uppercase font-bold mr-1 flex items-center gap-1">
                     <Bookmark className="w-3 h-3 text-amber-400" /> Volume:
                   </span>
-                  {selectedBook.volumes.map((vol, idx) => (
+                  {selectedBook.volumes.map((vol: any, idx: number) => (
                     <button
                       key={vol.id}
                       onClick={() => setActiveVolumeIndex(idx)}

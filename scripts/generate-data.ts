@@ -1,6 +1,7 @@
 import genshindb from 'genshin-db';
 import fs from 'fs';
 import path from 'path';
+import { COMPREHENSIVE_BOOKS } from '../src/data/books';
 
 const DATA_DIR = path.join(process.cwd(), 'src/data');
 
@@ -91,6 +92,21 @@ function generateReliquaryList() {
     console.log('Generated artifacts.json');
 }
 
+function generateBookList() {
+    const result = COMPREHENSIVE_BOOKS.map(b => ({
+        id: b.id,
+        name: b.name,
+        icon: b.iconUrl,
+        rank: b.rarity,
+        description: b.description,
+        volumes: b.volumes
+    }));
+    
+    fs.writeFileSync(path.join(DATA_DIR, 'books.json'), JSON.stringify(result, null, 2));
+    console.log('Generated books.json');
+}
+
 generateAvatarList();
 generateWeaponList();
 generateReliquaryList();
+generateBookList();
