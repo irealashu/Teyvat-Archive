@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Character } from '../types';
 import { INITIAL_CHARACTERS } from '../data/characters';
-import { fetchAmberList, fetchAmberDetail, AmberListItem, formatElementType, formatWeaponType } from '../services/amberService';
+import AVATARS from '../data/avatars.json';
 import { Search, Star, Filter, Sparkles, X, Shield, Zap, User, BookOpen, Mic } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
+import { formatElementType, formatWeaponType } from '../services/amberService';
 
 export const ArchiveAvatarView: React.FC = () => {
-  const [items, setItems] = useState<AmberListItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(AVATARS);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedElement, setSelectedElement] = useState<string>('All');
   const [selectedWeapon, setSelectedWeapon] = useState<string>('All');
@@ -19,48 +20,22 @@ export const ArchiveAvatarView: React.FC = () => {
   const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rarity-desc' | 'rarity-asc' | 'release-desc' | 'release-asc'>('release-desc');
 
   useEffect(() => {
-    let isMounted = true;
-    async function loadAvatars() {
-      setLoading(true);
-      const list = await fetchAmberList('avatar');
-      if (isMounted) {
-        if (list && list.length > 0) {
-          setItems(list);
-        } else {
-          setItems(
-            INITIAL_CHARACTERS.map((c: Character) => ({
-              id: c.id,
-              name: c.name,
-              icon: c.iconUrl,
-              rank: c.rarity,
-              element: c.element,
-              weaponType: c.weaponType,
-              description: c.description,
-            }))
-          );
-        }
-        setLoading(false);
-      }
-    }
-    loadAvatars();
-    return () => {
-      isMounted = false;
-    };
+      setItems(AVATARS);
   }, []);
 
   const handleSelectChar = async (id: string | number) => {
     setSelectedCharIndex(id);
     setDetailTab('profile');
     setDetailLoading(true);
-    const local = INITIAL_CHARACTERS.find((c: Character) => c.id === id || c.name.toLowerCase() === id.toString().toLowerCase());
-    const remoteDetail = await fetchAmberDetail('avatar', id);
-
-    if (remoteDetail) {
-      setDetailData(remoteDetail);
-    } else if (local) {
-      setDetailData(local);
+    
+    // In static mode, we look up details from our local pre-compiled data
+    const char = AVATARS.find(c => c.id == id || c.name.toLowerCase() === id.toString().toLowerCase());
+    
+    if (char) {
+      setDetailData(char);
     } else {
-      setDetailData(null);
+      const local = INITIAL_CHARACTERS.find((c: Character) => c.id === id || c.name.toLowerCase() === id.toString().toLowerCase());
+      setDetailData(local || null);
     }
     setDetailLoading(false);
   };

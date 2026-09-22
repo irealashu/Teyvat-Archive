@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ArtifactSet } from '../types';
 import { INITIAL_ARTIFACTS } from '../data/artifacts';
-import { fetchAmberList, fetchAmberDetail, AmberListItem } from '../services/amberService';
+import ARTIFACTS from '../data/artifacts.json';
 import { Search, Star, Sparkles, X, Gem, Shield, Layers } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
 
 export const ArchiveReliquaryView: React.FC = () => {
-  const [items, setItems] = useState<AmberListItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(ARTIFACTS);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRarity, setSelectedRarity] = useState<number | 'All'>('All');
   const [selectedSetId, setSelectedSetId] = useState<string | number | null>(null);
@@ -16,45 +16,21 @@ export const ArchiveReliquaryView: React.FC = () => {
   const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rarity-desc' | 'rarity-asc' | 'release-desc' | 'release-asc'>('release-desc');
 
   useEffect(() => {
-    let isMounted = true;
-    async function loadReliquaries() {
-      setLoading(true);
-      const list = await fetchAmberList('reliquary');
-      if (isMounted) {
-        if (list && list.length > 0) {
-          setItems(list);
-        } else {
-          setItems(
-            INITIAL_ARTIFACTS.map((a: ArtifactSet) => ({
-              id: a.id,
-              name: a.name,
-              icon: a.iconUrl,
-              rank: a.maxRarity,
-              description: a.twoPieceBonus,
-            }))
-          );
-        }
-        setLoading(false);
-      }
-    }
-    loadReliquaries();
-    return () => {
-      isMounted = false;
-    };
+      setItems(ARTIFACTS);
   }, []);
 
   const handleSelectSet = async (id: string | number) => {
     setSelectedSetId(id);
     setDetailLoading(true);
-    const local = INITIAL_ARTIFACTS.find((a: ArtifactSet) => a.id === id || a.name.toLowerCase() === id.toString().toLowerCase());
-    const remoteDetail = await fetchAmberDetail('reliquary', id);
-
-    if (remoteDetail) {
-      setDetailData(remoteDetail);
-    } else if (local) {
-      setDetailData(local);
+    
+    // In static mode, look up details from our local pre-compiled data
+    const artifact = ARTIFACTS.find(a => a.id == id || a.name.toLowerCase() === id.toString().toLowerCase());
+    
+    if (artifact) {
+      setDetailData(artifact);
     } else {
-      setDetailData(null);
+      const local = INITIAL_ARTIFACTS.find((a: ArtifactSet) => a.id === id || a.name.toLowerCase() === id.toString().toLowerCase());
+      setDetailData(local || null);
     }
     setDetailLoading(false);
   };

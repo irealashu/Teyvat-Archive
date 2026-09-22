@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Weapon } from '../types';
 import { INITIAL_WEAPONS } from '../data/weapons';
-import { fetchAmberList, fetchAmberDetail, AmberListItem, formatWeaponType } from '../services/amberService';
+import WEAPONS from '../data/weapons.json';
 import { Search, Star, Filter, Sparkles, X, Swords, BookOpen, Shield, Zap } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
+import { formatWeaponType } from '../services/amberService';
 
 export const ArchiveWeaponView: React.FC = () => {
-  const [items, setItems] = useState<AmberListItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(WEAPONS);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedWeaponType, setSelectedWeaponType] = useState<string>('All');
   const [selectedRarity, setSelectedRarity] = useState<number | 'All'>('All');
@@ -19,32 +20,7 @@ export const ArchiveWeaponView: React.FC = () => {
   const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rarity-desc' | 'rarity-asc' | 'release-desc' | 'release-asc'>('release-desc');
 
   useEffect(() => {
-    let isMounted = true;
-    async function loadWeapons() {
-      setLoading(true);
-      const list = await fetchAmberList('weapon');
-      if (isMounted) {
-        if (list && list.length > 0) {
-          setItems(list);
-        } else {
-          setItems(
-            INITIAL_WEAPONS.map((w: Weapon) => ({
-              id: w.id,
-              name: w.name,
-              icon: w.iconUrl,
-              rank: w.rarity,
-              weaponType: w.type,
-              description: w.description,
-            }))
-          );
-        }
-        setLoading(false);
-      }
-    }
-    loadWeapons();
-    return () => {
-      isMounted = false;
-    };
+      setItems(WEAPONS);
   }, []);
 
   const handleSelectWeapon = async (id: string | number) => {
@@ -52,15 +28,15 @@ export const ArchiveWeaponView: React.FC = () => {
     setRefinementLevel(1);
     setActiveTab('overview');
     setDetailLoading(true);
-    const local = INITIAL_WEAPONS.find((w: Weapon) => w.id === id || w.name.toLowerCase() === id.toString().toLowerCase());
-    const remoteDetail = await fetchAmberDetail('weapon', id);
-
-    if (remoteDetail) {
-      setDetailData(remoteDetail);
-    } else if (local) {
-      setDetailData(local);
+    
+    // In static mode, look up details from our local pre-compiled data
+    const weapon = WEAPONS.find(w => w.id == id || w.name.toLowerCase() === id.toString().toLowerCase());
+    
+    if (weapon) {
+      setDetailData(weapon);
     } else {
-      setDetailData(null);
+      const local = INITIAL_WEAPONS.find((w: Weapon) => w.id === id || w.name.toLowerCase() === id.toString().toLowerCase());
+      setDetailData(local || null);
     }
     setDetailLoading(false);
   };
