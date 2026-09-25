@@ -67,3 +67,16 @@ Compiles both the client-side single-page app (SPA) and server bundle cleanly:
 npm run build
 npm start
 ```
+
+---
+
+## 🌐 Deploying to GitHub Pages via GitHub Actions
+
+This repository includes a pre-configured automated workflow in `.github/workflows/deploy.yml` for publishing directly to **GitHub Pages**.
+
+### 1-Minute Setup in your GitHub Repository:
+1. Go to your repository on GitHub.
+2. Click **Settings** (top tabs) → **Pages** (left sidebar).
+3. Under **Build and deployment** → **Source**, change from `"Deploy from a branch"` to **`GitHub Actions`**.
+4. Push your changes to the `main` or `master` branch (or run the workflow manually under **Actions** → **Deploy The Damselette Archive to GitHub Pages** → **Run workflow**).
+5. GitHub Actions will build the static site, generate `.nojekyll` and SPA `404.html`, and publish your site!

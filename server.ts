@@ -3,7 +3,11 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { createServer as createViteServer } from 'vite';
 import genshindb from 'genshin-db';
-import { COMPREHENSIVE_BOOKS } from './src/data/books.js';
+import BOOKS from './src/data/books.json';
+import NPCS from './src/data/npcs.json';
+import EVENT_QUESTS from './src/data/event_quests.json';
+import { syncAllDatasets, syncNPCsDirect, syncQuestsDirect } from './src/services/syncService';
+import { fetchAndParseQuest } from './src/services/questParser';
 
 dotenv.config();
 
@@ -68,6 +72,9 @@ async function startServer() {
     reliquary: 'reliquary',
     artifact: 'reliquary',
     book: 'book',
+    npc: 'npc',
+    quest: 'quest',
+    worldquest: 'quest',
   };
 
   // High-performance index maps for genshin-db lookups by ID, Name, or Slug
@@ -754,11 +761,11 @@ async function startServer() {
       console.warn('Failed to fetch Amber books list:', err);
     }
 
-    return COMPREHENSIVE_BOOKS.map((b: any) => ({
+    return BOOKS.map((b: any) => ({
       id: b.id,
       name: b.name,
-      rank: b.rarity,
-      icon: b.iconUrl,
+      rank: b.rank,
+      icon: b.icon || b.iconUrl,
       description: b.description,
     }));
   }
@@ -827,15 +834,15 @@ async function startServer() {
       console.warn(`Failed to fetch Amber book detail for ${idOrName}:`, err);
     }
 
-    const local = COMPREHENSIVE_BOOKS.find((b: any) => String(b.id) === String(idOrName) || b.name.toLowerCase().includes(idOrName.toLowerCase()));
+    const local = BOOKS.find((b: any) => String(b.id) === String(idOrName) || b.name.toLowerCase().includes(idOrName.toLowerCase()));
     if (local) {
       return {
         id: local.id,
         name: local.name,
-        rank: local.rarity,
-        rarity: local.rarity,
-        iconUrl: local.iconUrl,
-        icon: local.iconUrl,
+        rank: local.rank,
+        rarity: local.rank,
+        iconUrl: local.iconUrl || local.icon,
+        icon: local.iconUrl || local.icon,
         description: local.description,
         volumes: local.volumes,
       };
@@ -868,6 +875,10 @@ async function startServer() {
       items = getReliquaryList();
     } else if (category === 'book') {
       items = await getBookList();
+    } else if (category === 'npc') {
+      items = NPCS;
+    } else if (category === 'quest') {
+      items = EVENT_QUESTS;
     }
 
     const responseObj = { data: { items } };
@@ -901,6 +912,10 @@ async function startServer() {
       detail = await getReliquaryDetail(id);
     } else if (category === 'book') {
       detail = await getBookDetail(id);
+    } else if (category === 'npc') {
+      detail = (NPCS as any[]).find((n: any) => String(n.id) === String(id) || n.name.toLowerCase() === id.toLowerCase()) || null;
+    } else if (category === 'quest') {
+      detail = (EVENT_QUESTS as any[]).find((v: any) => String(v.id) === String(id) || v.version.toLowerCase() === id.toLowerCase()) || null;
     }
 
     if (!detail) {
@@ -911,6 +926,69 @@ async function startServer() {
     const responseObj = { data: detail };
     amberCache[cacheKey] = { data: responseObj, timestamp: Date.now() };
     res.json(responseObj);
+  });
+
+  // Automated Data Sync Endpoints
+  app.all('/api/sync/all', async (_req, res) => {
+    try {
+      // Clear in-memory caches
+      for (const k of Object.keys(amberCache)) {
+        delete amberCache[k];
+      }
+      const result = await syncAllDatasets();
+      res.json(result);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.all('/api/sync/npcs', async (_req, res) => {
+    try {
+      delete amberCache['list-npc'];
+      const result = await syncNPCsDirect();
+      res.json({ success: true, result });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.all('/api/sync/quests', async (_req, res) => {
+    try {
+      delete amberCache['list-quest'];
+      const result = await syncQuestsDirect();
+      res.json({ success: true, result });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // Individual Quest Detail Proxy Endpoint with in-memory caching
+  const questMemoryCache: Record<string, any> = {};
+
+  app.get('/api/quest/detail', async (req, res) => {
+    const name = String(req.query.name || '').trim();
+    const eventName = String(req.query.eventName || '').trim();
+    const version = String(req.query.version || '').trim();
+    const majorTag = String(req.query.majorTag || '').trim();
+
+    if (!name) {
+      res.status(400).json({ error: 'Missing required query parameter "name"' });
+      return;
+    }
+
+    const cacheKey = `${version}__${eventName}__${name}`.toLowerCase();
+    if (questMemoryCache[cacheKey]) {
+      res.json(questMemoryCache[cacheKey]);
+      return;
+    }
+
+    try {
+      const data = await fetchAndParseQuest(name, eventName, version, majorTag);
+      questMemoryCache[cacheKey] = data;
+      res.json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
   });
 
   // Vite middleware for development vs static build in production

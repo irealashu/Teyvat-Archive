@@ -162,7 +162,40 @@ export interface Book {
   volumes?: BookVolume[];
 }
 
-export type ActiveTab = 'avatar' | 'weapon' | 'reliquary' | 'book';
+export interface NPCReward {
+  name: string;
+  count: string;
+  rarity: number;
+  iconUrl?: string;
+}
+
+export interface NPCEntry {
+  id: number;
+  name: string;
+  region: string;
+  rewards: NPCReward[];
+  locationText: string;
+  dialoguePrompt: string;
+  dialogueResponse: string;
+  locationImages?: string[];
+}
+
+export interface EventItem {
+  eventName: string;
+  questsCount: number;
+  quests: string[];
+}
+
+export interface VersionEventQuestGroup {
+  id: number;
+  version: string;
+  majorTag: string;
+  eventsCount: number;
+  totalQuestsCount: number;
+  events: EventItem[];
+}
+
+export type ActiveTab = 'avatar' | 'weapon' | 'reliquary' | 'book' | 'npc' | 'quest' | 'archon';
 
 export interface PlayerShowcaseProfile {
   uid: string;

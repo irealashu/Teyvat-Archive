@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Weapon } from '../types';
-import { INITIAL_WEAPONS } from '../data/weapons';
 import WEAPONS from '../data/weapons.json';
 import { Search, Star, Filter, Sparkles, X, Swords, BookOpen, Shield, Zap } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
@@ -29,15 +28,9 @@ export const ArchiveWeaponView: React.FC = () => {
     setActiveTab('overview');
     setDetailLoading(true);
     
-    // In static mode, look up details from our local pre-compiled data
+    // Look up details from our local pre-compiled data
     const weapon = WEAPONS.find(w => w.id == id || w.name.toLowerCase() === id.toString().toLowerCase());
-    
-    if (weapon) {
-      setDetailData(weapon);
-    } else {
-      const local = INITIAL_WEAPONS.find((w: Weapon) => w.id === id || w.name.toLowerCase() === id.toString().toLowerCase());
-      setDetailData(local || null);
-    }
+    setDetailData(weapon || null);
     setDetailLoading(false);
   };
 
@@ -65,12 +58,18 @@ export const ArchiveWeaponView: React.FC = () => {
       const verA = parseVersion(a.version);
       const verB = parseVersion(b.version);
       if (verB !== verA) return verB - verA;
+      const idA = Number(a.id) || 0;
+      const idB = Number(b.id) || 0;
+      if (idB !== idA) return idB - idA;
       return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'release-asc') {
       const verA = parseVersion(a.version);
       const verB = parseVersion(b.version);
       if (verA !== verB) return verA - verB;
+      const idA = Number(a.id) || 0;
+      const idB = Number(b.id) || 0;
+      if (idA !== idB) return idA - idB;
       return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'name-asc') {
@@ -83,18 +82,25 @@ export const ArchiveWeaponView: React.FC = () => {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankB !== rankA) return rankB - rankA;
+      const verA = parseVersion(a.version);
+      const verB = parseVersion(b.version);
+      if (verB !== verA) return verB - verA;
       return a.name.localeCompare(b.name);
     }
     if (sortBy === 'rarity-asc') {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankA !== rankB) return rankA - rankB;
+      const verA = parseVersion(a.version);
+      const verB = parseVersion(b.version);
+      if (verB !== verA) return verB - verA;
       return a.name.localeCompare(b.name);
     }
     return 0;
   });
 
-  const localWeapon = INITIAL_WEAPONS.find((w: Weapon) => w.id === selectedWeaponId || w.name.toLowerCase() === selectedWeaponId?.toString().toLowerCase());
+  const activeWeapon = items.find((w) => w.id === selectedWeaponId || w.name.toLowerCase() === selectedWeaponId?.toString().toLowerCase());
+  const localWeapon = activeWeapon;
 
   return (
     <div className="space-y-6">
@@ -119,7 +125,7 @@ export const ArchiveWeaponView: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 bg-slate-900/90 border border-slate-800 rounded-2xl backdrop-blur-md space-y-4 shadow-lg">
+      <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl space-y-4 shadow-lg">
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -293,17 +299,24 @@ export const ArchiveWeaponView: React.FC = () => {
                   <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/30 p-2 flex-shrink-0 shadow-xl overflow-hidden flex items-center justify-center">
                     <img
                       src={
-                        detailData?.icon
-                          ? detailData.icon.startsWith('http')
-                            ? detailData.icon
-                            : `https://gi.yatta.moe/assets/UI/${detailData.icon}.png`
-                          : localWeapon?.iconUrl || ''
+                        detailData?.icon ||
+                        activeWeapon?.icon ||
+                        (detailData?.filename ? `./assets/${detailData.filename}.png` : '') ||
+                        localWeapon?.iconUrl ||
+                        ''
                       }
-                      alt={detailData?.name || localWeapon?.name}
+                      alt={detailData?.name || activeWeapon?.name || localWeapon?.name}
                       className="w-full h-full object-contain filter drop-shadow-md"
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
-                        img.src = 'https://enka.network/ui/UI_EquipIcon_Sword_Blunt.png';
+                        const filename = detailData?.filename || activeWeapon?.filename;
+                        if (img.src.includes('yatta.moe') && filename) {
+                          img.src = `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${filename}.png`;
+                        } else if (img.src.includes('mihoyo.com') && filename) {
+                          img.src = `https://enka.network/ui/${filename}.png`;
+                        } else if (!img.src.includes('genshin.jmp.blue') && (detailData?.slug || activeWeapon?.slug)) {
+                          img.src = `https://genshin.jmp.blue/weapons/${detailData?.slug || activeWeapon?.slug}/icon`;
+                        }
                       }}
                     />
                   </div>
@@ -379,6 +392,9 @@ export const ArchiveWeaponView: React.FC = () => {
                       <GenshinTextRenderer
                         text={
                           detailData?.refinements?.[refinementLevel] ||
+                          detailData?.refinements?.[String(refinementLevel)] ||
+                          detailData?.[`r${refinementLevel}`] ||
+                          (typeof detailData?.[`r${refinementLevel}`] === 'object' ? detailData?.[`r${refinementLevel}`]?.description : undefined) ||
                           detailData?.passiveDescription ||
                           localWeapon?.passiveDescription ||
                           'Increases stats and triggers specialized elemental passive skills.'
@@ -390,29 +406,29 @@ export const ArchiveWeaponView: React.FC = () => {
 
                 {/* Tabs: Overview vs Story */}
                 <div className="space-y-4 pt-2">
-                  <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+                  <div className="grid grid-cols-2 gap-2 border-b border-slate-800 pb-3">
                     <button
                       onClick={() => setActiveTab('overview')}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                      className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
                         activeTab === 'overview'
-                          ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                          : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                          ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                          : 'bg-slate-950 text-slate-400 border-slate-800/90 hover:text-slate-200 hover:border-slate-700'
                       }`}
                     >
-                      <Swords className="w-4 h-4" />
-                      Overview & Description
+                      <Swords className="w-3.5 h-3.5 flex-shrink-0" />
+                      <span>Overview & Details</span>
                     </button>
 
                     <button
                       onClick={() => setActiveTab('story')}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                      className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
                         activeTab === 'story'
-                          ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                          : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                          ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                          : 'bg-slate-950 text-slate-400 border-slate-800/90 hover:text-slate-200 hover:border-slate-700'
                       }`}
                     >
-                      <BookOpen className="w-4 h-4" />
-                      Weapon Lore Story
+                      <BookOpen className="w-3.5 h-3.5 flex-shrink-0" />
+                      <span>Weapon Lore Story</span>
                     </button>
                   </div>
 

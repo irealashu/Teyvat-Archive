@@ -1,6 +1,6 @@
 {
   "name": "The Damselette Archive",
-  "description": "The Damselette Archive — A comprehensive Genshin Impact database featuring complete character archives, weapon arsenals, reliquary artifacts, and literature books.",
+  "description": "The Damselette Archive — A comprehensive Genshin Impact compendium featuring characters, weapon arsenals, reliquary artifacts, archival literature, NPC dialogue gifts, and limited-time event world quests.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

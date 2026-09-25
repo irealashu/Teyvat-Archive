@@ -1,8 +1,10 @@
-import { Character, Weapon, ArtifactSet, Book, ElementType, WeaponCategory } from '../types';
-import { INITIAL_CHARACTERS } from '../data/characters';
-import { INITIAL_WEAPONS } from '../data/weapons';
-import { INITIAL_ARTIFACTS } from '../data/artifacts';
-import { COMPREHENSIVE_BOOKS } from '../data/books';
+import { ElementType, WeaponCategory } from '../types';
+import AVATARS from '../data/avatars.json';
+import WEAPONS from '../data/weapons.json';
+import ARTIFACTS from '../data/artifacts.json';
+import BOOKS from '../data/books.json';
+import NPCS from '../data/npcs.json';
+import EVENT_QUESTS from '../data/event_quests.json';
 
 export interface AmberListItem {
   id: string | number;
@@ -23,7 +25,7 @@ export interface AmberListItem {
   version?: string;
 }
 
-export async function fetchAmberList(category: 'avatar' | 'weapon' | 'reliquary' | 'book'): Promise<AmberListItem[]> {
+export async function fetchAmberList(category: 'avatar' | 'weapon' | 'reliquary' | 'book' | 'npc' | 'quest'): Promise<any[]> {
   try {
     const res = await fetch(`/api/amber/${category}`);
     if (!res.ok) {
@@ -31,6 +33,13 @@ export async function fetchAmberList(category: 'avatar' | 'weapon' | 'reliquary'
     }
     const json = await res.json();
     const itemsObj = json?.data?.items || json?.response?.items || json?.items || {};
+
+    if (category === 'npc') {
+      return Array.isArray(itemsObj) && itemsObj.length > 0 ? itemsObj : NPCS;
+    }
+    if (category === 'quest') {
+      return Array.isArray(itemsObj) && itemsObj.length > 0 ? itemsObj : EVENT_QUESTS;
+    }
 
     if (Array.isArray(itemsObj)) {
       return itemsObj.map((item: any) => {
@@ -86,7 +95,7 @@ export async function fetchAmberList(category: 'avatar' | 'weapon' | 'reliquary'
   }
 }
 
-export async function fetchAmberDetail(category: 'avatar' | 'weapon' | 'reliquary' | 'book', id: string | number): Promise<any> {
+export async function fetchAmberDetail(category: 'avatar' | 'weapon' | 'reliquary' | 'book' | 'npc' | 'quest', id: string | number): Promise<any> {
   try {
     const res = await fetch(`/api/amber/${category}/${id}`);
     if (!res.ok) {
@@ -100,43 +109,46 @@ export async function fetchAmberDetail(category: 'avatar' | 'weapon' | 'reliquar
   }
 }
 
-function getFallbackList(category: 'avatar' | 'weapon' | 'reliquary' | 'book'): AmberListItem[] {
+function getFallbackList(category: 'avatar' | 'weapon' | 'reliquary' | 'book' | 'npc' | 'quest'): any[] {
   switch (category) {
     case 'avatar':
-      return INITIAL_CHARACTERS.map((c: Character) => ({
+      return AVATARS.map((c: any) => ({
         id: c.id,
         name: c.name,
-        icon: c.iconUrl,
-        rank: c.rarity,
+        icon: c.icon,
+        rank: c.rank,
         element: c.element,
         weaponType: c.weaponType,
         description: c.description,
       }));
     case 'weapon':
-      return INITIAL_WEAPONS.map((w: Weapon) => ({
+      return WEAPONS.map((w: any) => ({
         id: w.id,
         name: w.name,
-        icon: w.iconUrl,
-        rank: w.rarity,
-        weaponType: w.type,
+        icon: w.icon,
+        rank: w.rank,
+        weaponType: w.weaponType,
         description: w.description,
       }));
     case 'reliquary':
-      return INITIAL_ARTIFACTS.map((a: ArtifactSet) => ({
+      return ARTIFACTS.map((a: any) => ({
         id: a.id,
         name: a.name,
-        icon: a.iconUrl,
-        rank: a.maxRarity,
+        icon: a.icon,
+        rank: a.rank,
         description: a.twoPieceBonus,
       }));
     case 'book':
-      return COMPREHENSIVE_BOOKS.map((b: Book) => ({
+      return BOOKS.map((b: any) => ({
         id: b.id,
         name: b.name,
-        icon: b.iconUrl,
-        rank: b.rarity,
+        icon: b.icon,
         description: b.description,
       }));
+    case 'npc':
+      return NPCS;
+    case 'quest':
+      return EVENT_QUESTS;
     default:
       return [];
   }
@@ -164,4 +176,21 @@ export function formatWeaponType(type?: string): WeaponCategory {
   if (clean.includes('bow')) return 'Bow';
   if (clean.includes('catalyst')) return 'Catalyst';
   return 'Sword';
+}
+
+export function formatRegionName(region?: string, name?: string): string {
+  if (!region) return 'Teyvat';
+  const clean = region.trim().toLowerCase();
+  if (clean.includes('snezhnaya') || clean === 'snezhnaya_star') return 'Snezhnaya';
+  if (clean.includes('mondstadt')) return 'Mondstadt';
+  if (clean.includes('liyue')) return 'Liyue';
+  if (clean.includes('inazuma')) return 'Inazuma';
+  if (clean.includes('sumeru')) return 'Sumeru';
+  if (clean.includes('fontaine')) return 'Fontaine';
+  if (clean.includes('natlan')) return 'Natlan';
+  if (clean.includes('nodkrai') || clean.includes('nod-krai')) return 'Nod-Krai';
+  if (clean.includes('khaenri') || clean.includes('omni_scourge') || clean.includes('mainactor') || clean.includes('ranger') || clean.includes('outlander')) return 'Outlander';
+  if (name && (name.includes('Traveler') || name === 'Aether' || name === 'Lumine' || name === 'Aloy')) return 'Outlander';
+  // Capitalize nicely
+  return region.charAt(0).toUpperCase() + region.slice(1).replace(/_/g, ' ');
 }

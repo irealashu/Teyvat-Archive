@@ -1,0 +1,1832 @@
+[
+  {
+    "id": 1,
+    "version": "Version 1.0",
+    "majorTag": "1.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 1,
+    "events": [
+      {
+        "eventName": "Elemental Crucible",
+        "questsCount": 1,
+        "quests": [
+          "One Giant Step for Alchemy?"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "version": "Version 1.1",
+    "majorTag": "1.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 10,
+    "events": [
+      {
+        "eventName": "Unreconciled Stars",
+        "questsCount": 9,
+        "quests": [
+          "\"That Guy\"'s Scheme",
+          "A Mysterious Loss",
+          "Contingencies",
+          "That Which Fell From the Sky",
+          "The Siege of Qingce",
+          "Thoughts Carried On the Wind",
+          "To Each Their Duty",
+          "Trouble With Letters",
+          "Unlimited Opportunity"
+        ]
+      },
+      {
+        "eventName": "Gliding Challenge",
+        "questsCount": 1,
+        "quests": [
+          "Fly High"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "version": "Version 1.2",
+    "majorTag": "1.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 1,
+    "events": [
+      {
+        "eventName": "Lost Riches/2021-01-08",
+        "questsCount": 1,
+        "quests": [
+          "The Path of the Treasure-Seeker, Part I"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "version": "Version 1.3",
+    "majorTag": "1.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 31,
+    "events": [
+      {
+        "eventName": "Five Flushes of Fortune",
+        "questsCount": 1,
+        "quests": [
+          "Kurious Kamera (Quest)"
+        ]
+      },
+      {
+        "eventName": "Lantern Rite Tales",
+        "questsCount": 27,
+        "quests": [
+          "Beneath Splendent Lanterns",
+          "The Illumiscreen: I",
+          "The Illumiscreen: II",
+          "The Illumiscreen: III",
+          "A Festive First Adventure",
+          "A Very Festive Problem",
+          "City of Chores",
+          "Guardians of the Countryside",
+          "Guests in Qingce",
+          "Hammer and Wrench",
+          "Iron Ingot Meets Ziwei",
+          "Keeping Wanmin's Patrons Fed",
+          "Lantern of the Wayfarer",
+          "Lantern Rite, Big Business?",
+          "Little Lantern, Little Wish",
+          "Mondstadters in Liyue",
+          "Outspoken Linling",
+          "Promises Remembered as Lanterns Rise",
+          "Qingce's Lanterns",
+          "The Gift of a Lantern",
+          "Verses and Vistas of Lantern Rite (Part I)",
+          "Verses and Vistas of Lantern Rite (Part II)",
+          "Wangshu Once Again",
+          "When Scholar and Legends Meet",
+          "Where the Light Wanes",
+          "Yanxiao's Crazy Kitchen",
+          "Yesteryear's Lanterns and the Guhua of Today"
+        ]
+      },
+      {
+        "eventName": "Lantern Rite",
+        "questsCount": 1,
+        "quests": [
+          "Theater Mechanicus/2021-02-10/Story"
+        ]
+      },
+      {
+        "eventName": "Vishaps and Where to Find Them",
+        "questsCount": 2,
+        "quests": [
+          "The Vishaps Lie Dormant, but the Enigma Lingers Still",
+          "Vishaps and Where to Find Them (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "version": "Version 1.4",
+    "majorTag": "1.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 15,
+    "events": [
+      {
+        "eventName": "Invitation of Windblume",
+        "questsCount": 12,
+        "quests": [
+          "\"Quiet, please, this is a library!\"",
+          "Adventurers in Windblume",
+          "Ballads of Breeze (Invitation of Windblume)",
+          "Bullseye Balloons (Quest)",
+          "Flavor of the Month",
+          "Floral Freefall",
+          "Peculiar Wonderland (Quest)",
+          "The Sound of Discord",
+          "Those Hard-to-Reach Places",
+          "Windblume Research Report",
+          "Windblumes and Snowflakes",
+          "Windbrew"
+        ]
+      },
+      {
+        "eventName": "Contending Tides",
+        "questsCount": 1,
+        "quests": [
+          "Mountainous Summons"
+        ]
+      },
+      {
+        "eventName": "Wishful Drops",
+        "questsCount": 2,
+        "quests": [
+          "Life Flows On (I)",
+          "Life Flows On (II)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "version": "Version 1.5",
+    "majorTag": "1.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Energy Amplifier Initiation",
+        "questsCount": 1,
+        "quests": [
+          "Mr. Melancholy"
+        ]
+      },
+      {
+        "eventName": "Windtrace/2021-05-14",
+        "questsCount": 1,
+        "quests": [
+          "A Timeless Classic"
+        ]
+      },
+      {
+        "eventName": "Mimi Tomo",
+        "questsCount": 4,
+        "quests": [
+          "Hilichurl Justice",
+          "Mimi Tomo (Quest)",
+          "Mutual Exchange",
+          "The Lost Hilichurl"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "version": "Version 1.6",
+    "majorTag": "1.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 8,
+    "events": [
+      {
+        "eventName": "Midsummer Island Adventure",
+        "questsCount": 7,
+        "quests": [
+          "A Trip Through Fog and Wind",
+          "From Outer Lands",
+          "Summer Gift",
+          "The Other Side of Isle and Sea",
+          "The Winding Homeward Way",
+          "They Who Hear the Sea",
+          "Who Wields the Wild Wind?"
+        ]
+      },
+      {
+        "eventName": "Kaboomball Kombat",
+        "questsCount": 1,
+        "quests": [
+          "Big Badaboom Battle"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "version": "Version 2.0",
+    "majorTag": "2.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 7,
+    "events": [
+      {
+        "eventName": "Thunder Sojourn",
+        "questsCount": 4,
+        "quests": [
+          "Crossing Unknown Storm Clouds",
+          "Facing Distant Echoes",
+          "Tracking the Thunder",
+          "Voyage Prep"
+        ]
+      },
+      {
+        "eventName": "Lost Riches/2021-08-06",
+        "questsCount": 1,
+        "quests": [
+          "The Path of the Treasure-Seeker... Part II?"
+        ]
+      },
+      {
+        "eventName": "Theater Mechanicus: Stage of Wonders",
+        "questsCount": 1,
+        "quests": [
+          "Theater Mechanicus (Quest)"
+        ]
+      },
+      {
+        "eventName": "Phantom Flow",
+        "questsCount": 1,
+        "quests": [
+          "Phantom Flow: Phantasmal Blade"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "version": "Version 2.1",
+    "majorTag": "2.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 12,
+    "events": [
+      {
+        "eventName": "Hyakunin Ikki/2021-09-02",
+        "questsCount": 1,
+        "quests": [
+          "Hyakunin Ikki: The Greatest Battle"
+        ]
+      },
+      {
+        "eventName": "Lunar Realm",
+        "questsCount": 5,
+        "quests": [
+          "The Moon Has Risen",
+          "To Thee My Tender Grief Confide",
+          "By Thy Pale Beams I Solitary Rove",
+          "Over the Moon",
+          "Bait Resupply Plan"
+        ]
+      },
+      {
+        "eventName": "Spectral Secrets",
+        "questsCount": 2,
+        "quests": [
+          "Floating Spirits — The Investigation Begins",
+          "Floating Spirits — The Investigation Ends"
+        ]
+      },
+      {
+        "eventName": "Moonlight Merriment",
+        "questsCount": 4,
+        "quests": [
+          "Contraption-Contrived Cooking Course: Part I",
+          "Contraption-Contrived Cooking Course: Part II",
+          "Contraption-Contrived Cooking Course: Part III",
+          "The Many Matters of the Moonchase Festival"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "version": "Version 2.2",
+    "majorTag": "2.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Tuned to the World's Sounds",
+        "questsCount": 1,
+        "quests": [
+          "Tuned to the World's Sounds (Quest)"
+        ]
+      },
+      {
+        "eventName": "Shadow of the Ancients",
+        "questsCount": 4,
+        "quests": [
+          "Journey to Tsurumi",
+          "Autonomous Mechanical Energy Source: Preface",
+          "Autonomous Mechanical Energy Source: Live Sample",
+          "Autonomous Mechanical Energy Source: Conclusion"
+        ]
+      },
+      {
+        "eventName": "Dreams of Bloom",
+        "questsCount": 1,
+        "quests": [
+          "Dreams of Bloom (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "version": "Version 2.3",
+    "majorTag": "2.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Bantan Sango Case Files: The Warrior Dog",
+        "questsCount": 4,
+        "quests": [
+          "Bantan Sango Case File: Mystery of the Black Shadow",
+          "Bantan Sango Case File: Stealthy Trail",
+          "Bantan Sango Case File: The Truth (Just About) Comes to Light",
+          "Bantan Sango Case File: Recognition"
+        ]
+      },
+      {
+        "eventName": "Energy Amplifier Fruition",
+        "questsCount": 1,
+        "quests": [
+          "I, Researcher"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "version": "Version 2.4",
+    "majorTag": "2.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 11,
+    "events": [
+      {
+        "eventName": "A Study in Potions",
+        "questsCount": 2,
+        "quests": [
+          "Elixirs and Potions",
+          "Academic Exchange"
+        ]
+      },
+      {
+        "eventName": "Windtrace/2022-01-13",
+        "questsCount": 1,
+        "quests": [
+          "Windtrace (Quest)"
+        ]
+      },
+      {
+        "eventName": "Eight Locales Over Mountains and Seas",
+        "questsCount": 8,
+        "quests": [
+          "Eight Locales Over Mountains and Seas (Quest)",
+          "Eight Locales Over Mountains and Seas: Blazing Poetry",
+          "Eight Locales Over Mountains and Seas: One Hundred Sights of Dihua",
+          "Eight Locales Over Mountains and Seas: Snowswept Fairytale",
+          "Eight Locales Over Mountains and Seas: Soliloquy of Distant Island Peaks",
+          "Eight Locales Over Mountains and Seas: The Wonders of Adeptal Amber",
+          "Eight Locales Over Mountains and Seas: Two Cities' Recommendations",
+          "Eight Locales Over Mountains and Seas: Wanderer's Appraisal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "version": "Version 2.5",
+    "majorTag": "2.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 13,
+    "events": [
+      {
+        "eventName": "Three Realms Gateway Offering",
+        "questsCount": 2,
+        "quests": [
+          "That Which Our Ancestors Entrusted",
+          "The Bunkoku Enigma"
+        ]
+      },
+      {
+        "eventName": "Divine Ingenuity/2022-03-02",
+        "questsCount": 1,
+        "quests": [
+          "Divine Ingenuity (Quest)"
+        ]
+      },
+      {
+        "eventName": "Of Drink A-Dreaming",
+        "questsCount": 9,
+        "quests": [
+          "Dandelion, Rose, and Windwheel Aster",
+          "Docked on a Moonlit Night",
+          "Fine Wine From Yesterday",
+          "Of Drink A-Dreaming (Quest)",
+          "Of Drink A-Dreaming: Afterword",
+          "Solid Ice, Soluble in Wine",
+          "Surrounded by the Aroma of Tea",
+          "Untainted Autumn Frost",
+          "When They Take Off Their Armor"
+        ]
+      },
+      {
+        "eventName": "Hyakunin Ikki/2022-03-18",
+        "questsCount": 1,
+        "quests": [
+          "Hyakunin Ikki: Golden Whirlwind"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "version": "Version 2.6",
+    "majorTag": "2.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 21,
+    "events": [
+      {
+        "eventName": "Outside the Canvas, Inside the Lens/2022-04-01",
+        "questsCount": 1,
+        "quests": [
+          "Outside the Canvas, Inside the Lens (Quest)"
+        ]
+      },
+      {
+        "eventName": "Hues of the Violet Garden",
+        "questsCount": 18,
+        "quests": [
+          "Festival Deeds",
+          "A Story for You",
+          "About That Time We Saved the Tanuki Photo Board",
+          "Buyer's Guide to the Statue of Her Excellency, the Almighty Narukami Ogosho, God of Thunder",
+          "Pen Pals, Book Reviews, and the Super Lucky General",
+          "Go Forth, Golden Whirlwind!",
+          "Irodori Poetry: Part I",
+          "Irodori Poetry: Part II",
+          "Irodori Poetry: Part III",
+          "The Floral Courtyard: Part I",
+          "The Floral Courtyard: Part II",
+          "The Floral Courtyard: Part III",
+          "The Floral Courtyard: Part IV",
+          "Theater Mechanicus: Stage of Brilliance (Quest)",
+          "Versus Mishima Michitoshi",
+          "Versus Ookubo Sanzaemon",
+          "Versus Taroumaru",
+          "Versus Yasuhiko Tarou"
+        ]
+      },
+      {
+        "eventName": "Vibro-Crystal/2022-04-21",
+        "questsCount": 1,
+        "quests": [
+          "Vibro-Crystal Projections"
+        ]
+      },
+      {
+        "eventName": "Spices From the West/2022-05-14",
+        "questsCount": 1,
+        "quests": [
+          "A Visitor From Westward Realms"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "version": "Version 2.7",
+    "majorTag": "2.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 16,
+    "events": [
+      {
+        "eventName": "The Almighty Arataki Great and Glorious Drumalong Festival",
+        "questsCount": 2,
+        "quests": [
+          "Festival Afterword",
+          "The Almighty Arataki Great and Glorious Drumalong Festival (Quest)"
+        ]
+      },
+      {
+        "eventName": "A Muddy Bizarre Adventure",
+        "questsCount": 10,
+        "quests": [
+          "A Muddy Bizarre Adventure (Part 1)",
+          "A Muddy Bizarre Adventure (Part 2)",
+          "Spike Self-Circulation Report: Abstract (Part 1)",
+          "Spike Self-Circulation Report: Abstract (Part 2)",
+          "Spike Self-Circulation Report: Environs Log (Part 1)",
+          "Spike Self-Circulation Report: Environs Log (Part 2)",
+          "Spike Self-Circulation Report: Experimental Procedure (Part 1)",
+          "Spike Self-Circulation Report: Experimental Procedure (Part 2)",
+          "Spike Self-Circulation Report: Conclusion (Part 1)",
+          "Spike Self-Circulation Report: Conclusion (Part 2)"
+        ]
+      },
+      {
+        "eventName": "Core of the Apparatus",
+        "questsCount": 4,
+        "quests": [
+          "A-Toymaking We Shall Go",
+          "A-Toymaking We Shall Go: Energy Storage",
+          "A-Toymaking We Shall Go: Core Propulsion",
+          "A-Toymaking We Shall Go: Mass Production"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "version": "Version 2.8",
+    "majorTag": "2.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 21,
+    "events": [
+      {
+        "eventName": "Summertime Odyssey",
+        "questsCount": 16,
+        "quests": [
+          "The Scattered Past",
+          "A Misplaced Conch",
+          "The Discarded Insignia",
+          "The Misplaced Photo",
+          "The Treasure of the Four Skerries",
+          "Where the Treasure Dwells",
+          "Treasure Clue: Broken Isle",
+          "Treasure Clue: Minacious Isle",
+          "Treasure Clue: Pudding Isle",
+          "Treasure Clue: Twinning Isle",
+          "Bake-Danuki Wanderlust",
+          "Drama Phantasmagoria: Tale of the Sword-Wielding Princess!",
+          "The Bake-Danukis' Gift",
+          "The Final Treasure",
+          "Thus Was the Work Done in Vain",
+          "Treasure Voyage"
+        ]
+      },
+      {
+        "eventName": "Hidden Strife",
+        "questsCount": 2,
+        "quests": [
+          "All's Well That Ends Well (Quest)",
+          "Phantom of the Past"
+        ]
+      },
+      {
+        "eventName": "Reminiscent Regimen/2022-08-04",
+        "questsCount": 1,
+        "quests": [
+          "Any Unsolved Mysteries?"
+        ]
+      },
+      {
+        "eventName": "Evermotion Mechanical Painting",
+        "questsCount": 2,
+        "quests": [
+          "Evermotion Mechanical Painting (Quest)",
+          "Evermotion Mechanical Painting: Finale"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "version": "Version 3.0",
+    "majorTag": "3.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Graven Innocence",
+        "questsCount": 2,
+        "quests": [
+          "The Unappreciated Carving",
+          "Selling Like Hot Carvings"
+        ]
+      },
+      {
+        "eventName": "Lost Riches/2022-09-02",
+        "questsCount": 1,
+        "quests": [
+          "Treasures Beneath the Vines"
+        ]
+      },
+      {
+        "eventName": "Fayz Trials/2022-09-08",
+        "questsCount": 1,
+        "quests": [
+          "Thesis Proposal: He Shall not Pass"
+        ]
+      },
+      {
+        "eventName": "Tablet Analytics",
+        "questsCount": 2,
+        "quests": [
+          "The Cliffside Weirdo and a Risky Study?",
+          "Controllable Explosion"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "version": "Version 3.1",
+    "majorTag": "3.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 16,
+    "events": [
+      {
+        "eventName": "Of Ballads and Brews",
+        "questsCount": 12,
+        "quests": [
+          "Beverage Shop on the Pier",
+          "Charity Event! A Great Success!",
+          "Charity Event? Securing Funds?",
+          "Exemplary Adventurer!",
+          "Farmland Fugitives",
+          "Favonian Goodies",
+          "Favonian Goodies and Buddies",
+          "Fecund Hamper",
+          "Good as New",
+          "Mountain Mixologist",
+          "Secret Forest Shadow",
+          "Target: Master of the Snowy Peaks!"
+        ]
+      },
+      {
+        "eventName": "Hyakunin Ikki/2022-10-10",
+        "questsCount": 1,
+        "quests": [
+          "Hyakunin Ikki: Narukami Arena"
+        ]
+      },
+      {
+        "eventName": "Wind Chaser",
+        "questsCount": 1,
+        "quests": [
+          "Windswept Domain"
+        ]
+      },
+      {
+        "eventName": "Star-Seeker's Sojourn",
+        "questsCount": 2,
+        "quests": [
+          "Great Future Star",
+          "Where the Future Stars Fall"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "version": "Version 3.2",
+    "majorTag": "3.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 1,
+    "events": [
+      {
+        "eventName": "Outside the Canvas, Inside the Lens/2022-11-16",
+        "questsCount": 1,
+        "quests": [
+          "Outside the Canvas, Inside the Lens: Greenery Chapter (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "version": "Version 3.3",
+    "majorTag": "3.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Akitsu Kimodameshi",
+        "questsCount": 2,
+        "quests": [
+          "Akitsu Yuugei",
+          "Dreamlike"
+        ]
+      },
+      {
+        "eventName": "Windtrace/2022-12-23",
+        "questsCount": 1,
+        "quests": [
+          "Windtrace (Quest) 2022-12-23"
+        ]
+      },
+      {
+        "eventName": "Across the Wilderness",
+        "questsCount": 1,
+        "quests": [
+          "Across the Wilderness (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "version": "Version 3.4",
+    "majorTag": "3.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 12,
+    "events": [
+      {
+        "eventName": "The Exquisite Night Chimes",
+        "questsCount": 6,
+        "quests": [
+          "Between Facades and Familiar Faces",
+          "A Few Words in the Foreground",
+          "Backstage Helpers",
+          "Behind the Scenes (Event Quest)",
+          "Radiant Sparks",
+          "Vigilance at Sea"
+        ]
+      },
+      {
+        "eventName": "Second Blooming",
+        "questsCount": 1,
+        "quests": [
+          "A Librarian's Long and Carefree Vacation"
+        ]
+      },
+      {
+        "eventName": "Warrior's Spirit",
+        "questsCount": 3,
+        "quests": [
+          "Unexpected Battle",
+          "The Sight of the Divine Emissary",
+          "Warrior's Spirit (Event Quest)"
+        ]
+      },
+      {
+        "eventName": "Almighty Arataki Extraordinary and Exhilarating Extreme Beetle Brawl",
+        "questsCount": 2,
+        "quests": [
+          "Almighty Arataki Extraordinary and Exhilarating Extreme Beetle Brawl!",
+          "The Beetle Battles Will Never End!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "version": "Version 3.5",
+    "majorTag": "3.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 7,
+    "events": [
+      {
+        "eventName": "Windblume's Breath",
+        "questsCount": 3,
+        "quests": [
+          "Ballads of Breeze (Windblume's Breath)",
+          "Breezy Snapshots",
+          "Floral Pursuit"
+        ]
+      },
+      {
+        "eventName": "Vibro-Crystal/2023-03-14",
+        "questsCount": 1,
+        "quests": [
+          "Vibro-Crystal Reharmonization"
+        ]
+      },
+      {
+        "eventName": "Fungus Mechanicus",
+        "questsCount": 2,
+        "quests": [
+          "Old Friends, New Game",
+          "Parting Arrangement"
+        ]
+      },
+      {
+        "eventName": "Spices From the West/2023-03-31",
+        "questsCount": 1,
+        "quests": [
+          "A Visitor From Westward Realms: The Flavor of Freedom"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "version": "Version 3.6",
+    "majorTag": "3.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 28,
+    "events": [
+      {
+        "eventName": "Brewing Developments",
+        "questsCount": 2,
+        "quests": [
+          "An Abundant Estimation",
+          "Boiling Over!"
+        ]
+      },
+      {
+        "eventName": "Fulminating Sandstorm",
+        "questsCount": 9,
+        "quests": [
+          "The Culling of the Worms: Body",
+          "The Culling of the Worms: Conclusion",
+          "The Culling of the Worms: Demonstration",
+          "The Culling of the Worms: Ending",
+          "The Culling of the Worms: Gathering",
+          "The Culling of the Worms: Introduction",
+          "The Culling of the Worms: Presentation",
+          "The Culling of the Worms: Proposal",
+          "The Culling of the Worms: Testing"
+        ]
+      },
+      {
+        "eventName": "A Parade of Providence",
+        "questsCount": 11,
+        "quests": [
+          "\"That Incident From Twenty Years Ago\"",
+          "Antiquity Hunt",
+          "Antiquity Hunt: Conclusion",
+          "Concocted Reaction",
+          "Gathering of Stars",
+          "In Truth's Steps",
+          "Mimetic Replication",
+          "Project Connectivity",
+          "Sachin's Article",
+          "The Contestant",
+          "When the Curtains Close"
+        ]
+      },
+      {
+        "eventName": "The Recollector's Path",
+        "questsCount": 6,
+        "quests": [
+          "The Recollector's Path (Part 1)",
+          "The Recollector's Path (Part 2)",
+          "The Recollector's Path (Part 3)",
+          "The Recollector's Path (Part 4)",
+          "The Recollector's Path (Part 5)",
+          "The Recollector's Path (Part 6)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "version": "Version 3.7",
+    "majorTag": "3.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Duel! The Summoners' Summit!",
+        "questsCount": 4,
+        "quests": [
+          "A Tour of Wonders",
+          "Evermotion Mechanical Painting: Invoker",
+          "Heart of the Dice",
+          "Zero Hour Invokation"
+        ]
+      },
+      {
+        "eventName": "Divine Ingenuity/2023-06-08",
+        "questsCount": 1,
+        "quests": [
+          "Divine Ingenuity: Collector's Chapter (Quest)"
+        ]
+      },
+      {
+        "eventName": "Fayz Trials/2023-06-21",
+        "questsCount": 1,
+        "quests": [
+          "Experiment Phase: Uncontrolled Parameters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "version": "Version 3.8",
+    "majorTag": "3.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 14,
+    "events": [
+      {
+        "eventName": "Secret Summer Paradise",
+        "questsCount": 12,
+        "quests": [
+          "Daiya's Three-Day Reverie",
+          "Daiya's Three-Day Reverie (Quest)",
+          "Petrifying Gaze",
+          "Skycastle Saviors",
+          "The Black Nacre and the All-Devouring Kraken",
+          "A Starry Night, as Remembered",
+          "Aren't Finches the Cutest?",
+          "Capturing Light and Shadow",
+          "Crocs? Water Cannons? It's War!",
+          "Determined and Elegant Battle Dance?",
+          "Returning Curios",
+          "The Phantom Toy Master and the Barking Fox"
+        ]
+      },
+      {
+        "eventName": "Perilous Expedition",
+        "questsCount": 1,
+        "quests": [
+          "Complex Cartography"
+        ]
+      },
+      {
+        "eventName": "Shared Sight",
+        "questsCount": 1,
+        "quests": [
+          "Tell me, mirror mirror"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "version": "Version 4.0",
+    "majorTag": "4.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 7,
+    "events": [
+      {
+        "eventName": "Mega Meka Melee",
+        "questsCount": 6,
+        "quests": [
+          "Simulation: Azure Dash",
+          "Simulation: Sweeping the Wilds",
+          "Tabletop Adventurer",
+          "The Toy War: An Armistice",
+          "The Toy War: Heating Up",
+          "The Toy War: Shots Fired"
+        ]
+      },
+      {
+        "eventName": "Studies in Light and Shadow: A Fontaine of Enchantment",
+        "questsCount": 1,
+        "quests": [
+          "Studies in Light and Shadow: A Fontaine of Enchantment (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "version": "Version 4.1",
+    "majorTag": "4.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 8,
+    "events": [
+      {
+        "eventName": "Radiant Harvest",
+        "questsCount": 2,
+        "quests": [
+          "Radiant Harvest: Cause and Effect",
+          "Radiant Harvest: Compensation"
+        ]
+      },
+      {
+        "eventName": "Dodoco's Bomb-Tastic Adventure",
+        "questsCount": 2,
+        "quests": [
+          "Crisis Relieved! A Happy Memento!",
+          "Mysterious Fish? A Booming Adventure!"
+        ]
+      },
+      {
+        "eventName": "Waterborne Poetry",
+        "questsCount": 3,
+        "quests": [
+          "Hundred-Pace Hurling Rites",
+          "Inspiration Eruption",
+          "Mending Painting Prospects"
+        ]
+      },
+      {
+        "eventName": "The Peaks and Troughs of Life",
+        "questsCount": 1,
+        "quests": [
+          "The Peaks and Troughs of Life (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "version": "Version 4.2",
+    "majorTag": "4.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Graph Adversarial Technology Experiment Log",
+        "questsCount": 1,
+        "quests": [
+          "Goal: Counter the \"Phantom Blubberbeast!\""
+        ]
+      },
+      {
+        "eventName": "Lil' Fungi's Fun-Tastic Fiesta",
+        "questsCount": 4,
+        "quests": [
+          "A Clash Between the First and the Latest!",
+          "A Not-So-Distant Farewell",
+          "Fungi Are Not Tidalga!",
+          "Lil' Fungi's Fun-Tastic Fiesta!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "version": "Version 4.3",
+    "majorTag": "4.x",
+    "eventsCount": 4,
+    "totalQuestsCount": 10,
+    "events": [
+      {
+        "eventName": "Roses and Muskets",
+        "questsCount": 4,
+        "quests": [
+          "Rescue the Poor Contract Employee!",
+          "Special Lighting and the Stars of Tomorrow!",
+          "Spread Out Less Than An Arcminute!",
+          "The Arrival of a...!"
+        ]
+      },
+      {
+        "eventName": "Lost Riches/2024-01-02",
+        "questsCount": 2,
+        "quests": [
+          "Treasures Under the Sea",
+          "Treasures Under the Sea: Epilogue"
+        ]
+      },
+      {
+        "eventName": "Dance of Resolute Will",
+        "questsCount": 2,
+        "quests": [
+          "Blade Dance's Unexpected End!",
+          "The Art of the Elegant Blade Dance?"
+        ]
+      },
+      {
+        "eventName": "Arataki Blazing Armor Beetle Battle Boot Camp",
+        "questsCount": 2,
+        "quests": [
+          "Arataki Blazing Armor Beetle Battle Boot Camp!",
+          "Provisionally Perpetual Beetle Battle!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "version": "Version 4.4",
+    "majorTag": "4.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 8,
+    "events": [
+      {
+        "eventName": "Vibrant Harriers Aloft in Spring Breeze",
+        "questsCount": 4,
+        "quests": [
+          "Hustle and Bustle",
+          "Iridescent Cloud-Striding",
+          "Just Wushou Dance!",
+          "Paper Shadow Ruminations"
+        ]
+      },
+      {
+        "eventName": "Receiver of Friends From Afar",
+        "questsCount": 4,
+        "quests": [
+          "Receiver of Friends From Afar: Part I",
+          "Receiver of Friends From Afar: Part II",
+          "Receiver of Friends From Afar: Part III",
+          "Receiver of Friends From Afar: Part IV"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "version": "Version 4.5",
+    "majorTag": "4.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 7,
+    "events": [
+      {
+        "eventName": "Fayz Trials/2024-03-22",
+        "questsCount": 2,
+        "quests": [
+          "Fight for Academic Reputation!",
+          "Report the Experimental Data"
+        ]
+      },
+      {
+        "eventName": "Rolling Crossfire",
+        "questsCount": 2,
+        "quests": [
+          "For the Future's Sake, Experiment!",
+          "The Gardes' Inventor"
+        ]
+      },
+      {
+        "eventName": "Feline Fortress Furrdyssey",
+        "questsCount": 3,
+        "quests": [
+          "Bulle Fruit-Hued Interloper!",
+          "Furball Fortress's Frightful Fix!",
+          "Sir Pouncelot Joins the Lot!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "version": "Version 4.6",
+    "majorTag": "4.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Vibro-Crystal/2024-04-28",
+        "questsCount": 1,
+        "quests": [
+          "\"Vibro-Crystals, It's Always Vibro-Crystals\""
+        ]
+      },
+      {
+        "eventName": "Specially-Shaped Saurian Search",
+        "questsCount": 5,
+        "quests": [
+          "Search Chronicle: Burning Up!",
+          "Search Chronicle: Cold, Round Belly!",
+          "Search Chronicle: For Childhood Dreams!",
+          "Search Chronicle: Audience with the Solitary King!",
+          "Search Chronicle: Afterword"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "version": "Version 4.7",
+    "majorTag": "4.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Mutual Security Enhancing Simulation",
+        "questsCount": 2,
+        "quests": [
+          "Commanders and Wargames",
+          "Scenarios for Study"
+        ]
+      },
+      {
+        "eventName": "Record of Reflective Writing",
+        "questsCount": 1,
+        "quests": [
+          "Imaginary Maze of True Heroes"
+        ]
+      },
+      {
+        "eventName": "Spino Doubleblaster",
+        "questsCount": 1,
+        "quests": [
+          "We Meet Again, Cannon..."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "version": "Version 4.8",
+    "majorTag": "4.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 13,
+    "events": [
+      {
+        "eventName": "Summertide Scales and Tales",
+        "questsCount": 11,
+        "quests": [
+          "\"Brave Northerly Wind\"",
+          "\"Flying Hatter\"",
+          "\"Good Shelf\"",
+          "\"Owl Musician\"",
+          "An Odd Textual Mystery",
+          "Narration Footnotes",
+          "Text's Coda",
+          "The Answer of the Lotus Leaves and Forest",
+          "The Forest and the Princess",
+          "The Lotus Leaf and the Champion",
+          "Towards the Lighthouse, or Far Away"
+        ]
+      },
+      {
+        "eventName": "Outside the Canvas, Inside the Lens/2024-07-29",
+        "questsCount": 1,
+        "quests": [
+          "Outside the Canvas, Inside the Lens: Dew-Kissed Chapter (Quest)"
+        ]
+      },
+      {
+        "eventName": "Bing-Bang Finchball/2024-08-06",
+        "questsCount": 1,
+        "quests": [
+          "Finches Are Still the Cutest!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "version": "Version 5.0",
+    "majorTag": "5.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Traces of Artistry",
+        "questsCount": 2,
+        "quests": [
+          "Avant-Garde Graffiti Visionary!",
+          "On the Graffiti Road"
+        ]
+      },
+      {
+        "eventName": "Dodoco's Boom-Bastic Escapades",
+        "questsCount": 1,
+        "quests": [
+          "Dodoco's Boom-Bastic Escapades!"
+        ]
+      },
+      {
+        "eventName": "Mementos of Teyvat/2024-09-28",
+        "questsCount": 1,
+        "quests": [
+          "A Honest Promotion"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "version": "Version 5.1",
+    "majorTag": "5.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Aphid Treasure Trace",
+        "questsCount": 2,
+        "quests": [
+          "Aphid Treasure",
+          "Last Ride of the Bugbuster Squad"
+        ]
+      },
+      {
+        "eventName": "Chromatic Ode of Candies and Roses",
+        "questsCount": 3,
+        "quests": [
+          "Mapping Dreams and Reality",
+          "Rocking Carriage",
+          "Shadow of the Knight's Blade"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "version": "Version 5.2",
+    "majorTag": "5.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 2,
+    "events": [
+      {
+        "eventName": "Claw Convoy",
+        "questsCount": 2,
+        "quests": [
+          "Our Animal Friends",
+          "Our Animal Friends: Epilogue"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "version": "Version 5.3",
+    "majorTag": "5.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 12,
+    "events": [
+      {
+        "eventName": "Emblem of Steadfast Valor",
+        "questsCount": 1,
+        "quests": [
+          "A Hero's Approval!"
+        ]
+      },
+      {
+        "eventName": "On the Trail of Behemoths",
+        "questsCount": 2,
+        "quests": [
+          "Whither Shall a Member of a \"Secret Organization\" Go?",
+          "Why Did a Member of a \"Secret Organization\" Come Here?"
+        ]
+      },
+      {
+        "eventName": "Springtime Charms",
+        "questsCount": 9,
+        "quests": [
+          "Custom Gift Envelope No. 1",
+          "Custom Gift Envelope No. 2",
+          "Custom Gift Envelope No. 3",
+          "Custom Gift Envelope No. 4",
+          "Custom Gift Envelope No. 5",
+          "Custom Gift Envelope No. 6",
+          "Custom Gift Envelope No. 7",
+          "Drills by Lamplight",
+          "Final Stanza: The Sanctification of Tao Dou"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "version": "Version 5.4",
+    "majorTag": "5.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Invasive Fish Wrangler",
+        "questsCount": 2,
+        "quests": [
+          "A Very Fishy Encounter",
+          "An Invasion on Hold"
+        ]
+      },
+      {
+        "eventName": "Reel Ad-Venture",
+        "questsCount": 2,
+        "quests": [
+          "A Time-Tested Friendship",
+          "Filmmaking Notes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "version": "Version 5.5",
+    "majorTag": "5.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Tournament of Glory in Bloom",
+        "questsCount": 2,
+        "quests": [
+          "Go Go Saurian Expedition!",
+          "Let the Bloomflower Trials Begin!"
+        ]
+      },
+      {
+        "eventName": "Rhythm Ball Meztli",
+        "questsCount": 2,
+        "quests": [
+          "A Style-Fusion Symposium",
+          "Rhythm Ball Revolution!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "version": "Version 5.6",
+    "majorTag": "5.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 1,
+    "events": [
+      {
+        "eventName": "Legends Ablaze: Cross-Border Brawl",
+        "questsCount": 1,
+        "quests": [
+          "A Scrollbound Skirmish"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "version": "Version 5.7",
+    "majorTag": "5.x",
+    "eventsCount": 2,
+    "totalQuestsCount": 3,
+    "events": [
+      {
+        "eventName": "Battle of Imagined Arrays",
+        "questsCount": 1,
+        "quests": [
+          "Those Strange and Intriguing Questions"
+        ]
+      },
+      {
+        "eventName": "Fearsome Ferocious Firepower",
+        "questsCount": 2,
+        "quests": [
+          "Pre-Packaged Solution",
+          "The Cannon Has Ears"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "version": "Version 5.8",
+    "majorTag": "5.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 9,
+    "events": [
+      {
+        "eventName": "Sunspray Summer Resort (Event)",
+        "questsCount": 4,
+        "quests": [
+          "A Feast for the Senses",
+          "Strikers Through the Storm",
+          "Travels Are Fuller With Friends",
+          "With Flying (Graffiti) Colors"
+        ]
+      },
+      {
+        "eventName": "Tracing Vanishing Trails",
+        "questsCount": 4,
+        "quests": [
+          "An Instant of Intoxication, A Meeting by Moonlight",
+          "Covert Investigation, Dirty Money Misdeeds (Part 1)",
+          "Covert Investigation, Dirty Money Misdeeds (Part 2)",
+          "Covert Investigation, Dirty Money Misdeeds (Part 3)"
+        ]
+      },
+      {
+        "eventName": "Mementos of Teyvat/2025-08-21",
+        "questsCount": 1,
+        "quests": [
+          "Wayfarer's Whispers"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "version": "Version Luna I",
+    "majorTag": "Special",
+    "eventsCount": 2,
+    "totalQuestsCount": 9,
+    "events": [
+      {
+        "eventName": "Clink Clank Clash",
+        "questsCount": 7,
+        "quests": [
+          "A Mysterious Outsourced Contract",
+          "An Adventurer's Woes",
+          "Backup Plans",
+          "Misplaced Creativity",
+          "New Idea",
+          "The Last Step of Testing",
+          "Unwritten Rules"
+        ]
+      },
+      {
+        "eventName": "Lightgleaner's Journey",
+        "questsCount": 2,
+        "quests": [
+          "A Gift of Memories",
+          "A Warm Promise"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "version": "Version Luna II",
+    "majorTag": "Special",
+    "eventsCount": 3,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Saurian Sojourn",
+        "questsCount": 1,
+        "quests": [
+          "Saurian Sojourn (Quest)"
+        ]
+      },
+      {
+        "eventName": "Ruins Exploration: Fieldwise Center",
+        "questsCount": 2,
+        "quests": [
+          "Crisis Management Unit, Fully Operational!",
+          "Fieldwise Mastery, Unyielding Progress!"
+        ]
+      },
+      {
+        "eventName": "Dance Dance Dynamic Disco",
+        "questsCount": 2,
+        "quests": [
+          "Dance Exchanges — A Beautiful Start",
+          "We'll Dance Together Again!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "version": "Version Luna III",
+    "majorTag": "Special",
+    "eventsCount": 2,
+    "totalQuestsCount": 10,
+    "events": [
+      {
+        "eventName": "Bing-Bang Finchball/2025-12-05",
+        "questsCount": 1,
+        "quests": [
+          "Finches Are Still the Cutest"
+        ]
+      },
+      {
+        "eventName": "Soulblazers' Snowbound Journey",
+        "questsCount": 9,
+        "quests": [
+          "A Gift From Yae Publishing House",
+          "A Message From the Junior",
+          "A Surprise From a Fellow Comics Fan",
+          "An Invitation From the Spark Knight",
+          "Greetings From the Knights of Favonius",
+          "Let's Go, Saury-Saury Scout!",
+          "Playing in the Snow Counts as Training Too!",
+          "Serendipitous Encounters and a Curious Consensus",
+          "Strength, Courage, and Trials"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "version": "Version Luna IV",
+    "majorTag": "Special",
+    "eventsCount": 3,
+    "totalQuestsCount": 11,
+    "events": [
+      {
+        "eventName": "Shutterflash Memory Hunt",
+        "questsCount": 2,
+        "quests": [
+          "Hot in a Flash, or Cold Just as Fast",
+          "Well Done! What's the Next Big Plan?"
+        ]
+      },
+      {
+        "eventName": "A Lanternlit Ode to the Silver Moon (Event)",
+        "questsCount": 7,
+        "quests": [
+          "Bright Moon, Lantern Glow",
+          "Good Fortune Shared",
+          "Light the Way of Wishes",
+          "The Moonlit Adeptus's Trail",
+          "Vigorous Brushstrokes",
+          "Wishes Contended, Fortunes Won",
+          "Wishing Wonderful Wishes"
+        ]
+      },
+      {
+        "eventName": "Moonlit Patrol Exercise",
+        "questsCount": 2,
+        "quests": [
+          "End of a Leisurely Holiday",
+          "Moonlit Patrol Exercise (Quest)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "version": "Version Luna V",
+    "majorTag": "Special",
+    "eventsCount": 3,
+    "totalQuestsCount": 11,
+    "events": [
+      {
+        "eventName": "Homeward, He Who Caught the Wind",
+        "questsCount": 3,
+        "quests": [
+          "A Special Blend, A Timeless Masterpiece",
+          "Gliding Challenge: New Heights",
+          "Honorary Knight's Notes on Mixology"
+        ]
+      },
+      {
+        "eventName": "Sightseeing With Friends",
+        "questsCount": 7,
+        "quests": [
+          "A New Day at the Lil' Fungi Playground",
+          "Behold the Grandeur, Seize the Splendor",
+          "Reunite, My Shroom Buddies!",
+          "Sightseeing With Friends: A Trip to Fontaine",
+          "Sightseeing With Friends: Back to Sumeru",
+          "Sightseeing With Friends: Scenic Highlights",
+          "Sightseeing With Friends: Underwater Fun"
+        ]
+      },
+      {
+        "eventName": "Operation Stronghold Defense",
+        "questsCount": 1,
+        "quests": [
+          "Stronghold Guard: Hoard Guard Unit!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "version": "Version Luna VI",
+    "majorTag": "Special",
+    "eventsCount": 3,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Surveying &amp; Mapping Studies",
+        "questsCount": 2,
+        "quests": [
+          "A \"Battlefield\" Feast After Work",
+          "A Knight's Guide to Surveying"
+        ]
+      },
+      {
+        "eventName": "Where Waves Meet the Reef",
+        "questsCount": 1,
+        "quests": [
+          "Return Home, Children of the Desert"
+        ]
+      },
+      {
+        "eventName": "Rapid Capture",
+        "questsCount": 2,
+        "quests": [
+          "A Robust Theoretical Discussion",
+          "Popular Entertainment"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "version": "Version Luna VII",
+    "majorTag": "Special",
+    "eventsCount": 2,
+    "totalQuestsCount": 4,
+    "events": [
+      {
+        "eventName": "Trials of the Brave Warrior",
+        "questsCount": 2,
+        "quests": [
+          "Final Match Concludes, Champion Decided",
+          "Technical Martial Challenge"
+        ]
+      },
+      {
+        "eventName": "Kaleidoscopic Color Chase",
+        "questsCount": 2,
+        "quests": [
+          "A Splash of Color on the Plate!",
+          "Don't Let the Colors Escape!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "version": "Version Luna VIII",
+    "majorTag": "Special",
+    "eventsCount": 3,
+    "totalQuestsCount": 21,
+    "events": [
+      {
+        "eventName": "Sunny Summer Fontinalia (Event)",
+        "questsCount": 17,
+        "quests": [
+          "A Superstar... In the Aquarium?",
+          "A Warning From the Wrathful Fish!",
+          "An Actor... In the Aquarium?",
+          "Betterments in Aquatic Circumstances...",
+          "Danger? Keep Away!",
+          "Elegance? Safety First!",
+          "Fisharium Open For Business!",
+          "Friends... In the Aquarium?",
+          "Just a 30% Cut!",
+          "Rapid Restitution to the Raging Fish...",
+          "Something's Wrong With the Water",
+          "The Cantankerous Fish Have Their Circumstances?",
+          "The Emergence of Irate Fish?",
+          "The Underwater Salvage Commandments",
+          "Tons of Tons of Furious Fish...",
+          "Underwater Restoration in Progress...",
+          "Us... In the Aquarium?"
+        ]
+      },
+      {
+        "eventName": "Final Long-Range Sightlines",
+        "questsCount": 2,
+        "quests": [
+          "Flower, Feathers, and Bullets",
+          "Sightlines and Camera Tricks"
+        ]
+      },
+      {
+        "eventName": "Dance Dance Easy-Breezy Disco",
+        "questsCount": 2,
+        "quests": [
+          "A Lighthearted Feast of Magic!",
+          "Disco in Motion, Holiday Emotion!"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "version": "Version 7.0",
+    "majorTag": "7.x",
+    "eventsCount": 3,
+    "totalQuestsCount": 5,
+    "events": [
+      {
+        "eventName": "Mutual Aid in Bloom: Into the Frostlands",
+        "questsCount": 2,
+        "quests": [
+          "A Promise to Share Our Tips...",
+          "The Way of Mutual Aid and Advancement?"
+        ]
+      },
+      {
+        "eventName": "Great Expeditionist Challenge",
+        "questsCount": 2,
+        "quests": [
+          "Adventurers of Teyvat: Grand Showdown!",
+          "Paimon's \"Driyosh\" Way of Solving Problems"
+        ]
+      },
+      {
+        "eventName": "Trial of the Bastion",
+        "questsCount": 1,
+        "quests": [
+          "A Grueling Combat Simulation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "version": "Version 7.1",
+    "majorTag": "7.x",
+    "eventsCount": 1,
+    "totalQuestsCount": 6,
+    "events": [
+      {
+        "eventName": "Silverwing in Pursuit of the Moon",
+        "questsCount": 6,
+        "quests": [
+          "Food Street Must Be Saved!",
+          "The Chefs From a Foreign Land",
+          "Deliciousness Knows No Borders",
+          "Battle Beneath the Spirit-Quelling Banner",
+          "Little Figure Exorcism",
+          "Sigil Barrage Kaleidoscope"
+        ]
+      }
+    ]
+  }
+]

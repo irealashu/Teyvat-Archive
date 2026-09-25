@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ArtifactSet } from '../types';
-import { INITIAL_ARTIFACTS } from '../data/artifacts';
 import ARTIFACTS from '../data/artifacts.json';
 import { Search, Star, Sparkles, X, Gem, Shield, Layers } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
@@ -23,15 +22,9 @@ export const ArchiveReliquaryView: React.FC = () => {
     setSelectedSetId(id);
     setDetailLoading(true);
     
-    // In static mode, look up details from our local pre-compiled data
+    // Look up details from our local pre-compiled data
     const artifact = ARTIFACTS.find(a => a.id == id || a.name.toLowerCase() === id.toString().toLowerCase());
-    
-    if (artifact) {
-      setDetailData(artifact);
-    } else {
-      const local = INITIAL_ARTIFACTS.find((a: ArtifactSet) => a.id === id || a.name.toLowerCase() === id.toString().toLowerCase());
-      setDetailData(local || null);
-    }
+    setDetailData(artifact || null);
     setDetailLoading(false);
   };
 
@@ -55,12 +48,18 @@ export const ArchiveReliquaryView: React.FC = () => {
       const verA = parseVersion(a.version);
       const verB = parseVersion(b.version);
       if (verB !== verA) return verB - verA;
+      const idA = Number(a.id) || 0;
+      const idB = Number(b.id) || 0;
+      if (idB !== idA) return idB - idA;
       return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'release-asc') {
       const verA = parseVersion(a.version);
       const verB = parseVersion(b.version);
       if (verA !== verB) return verA - verB;
+      const idA = Number(a.id) || 0;
+      const idB = Number(b.id) || 0;
+      if (idA !== idB) return idA - idB;
       return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'name-asc') {
@@ -73,18 +72,25 @@ export const ArchiveReliquaryView: React.FC = () => {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankB !== rankA) return rankB - rankA;
+      const verA = parseVersion(a.version);
+      const verB = parseVersion(b.version);
+      if (verB !== verA) return verB - verA;
       return a.name.localeCompare(b.name);
     }
     if (sortBy === 'rarity-asc') {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankA !== rankB) return rankA - rankB;
+      const verA = parseVersion(a.version);
+      const verB = parseVersion(b.version);
+      if (verB !== verA) return verB - verA;
       return a.name.localeCompare(b.name);
     }
     return 0;
   });
 
-  const localSet = INITIAL_ARTIFACTS.find((a: ArtifactSet) => a.id === selectedSetId || a.name.toLowerCase() === selectedSetId?.toString().toLowerCase());
+  const activeSet = items.find((a) => a.id === selectedSetId || a.name.toLowerCase() === selectedSetId?.toString().toLowerCase());
+  const localSet = activeSet;
 
   return (
     <div className="space-y-6">
@@ -109,7 +115,7 @@ export const ArchiveReliquaryView: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 bg-slate-900/90 border border-slate-800 rounded-2xl backdrop-blur-md space-y-4 shadow-lg">
+      <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl space-y-4 shadow-lg">
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -194,11 +200,23 @@ export const ArchiveReliquaryView: React.FC = () => {
             >
               {/* Rarity */}
               <div className="w-full flex items-center justify-between text-[10px]">
-                <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-semibold">
-                  Reliquary Set
+                <span className={`px-2 py-0.5 rounded border font-semibold ${
+                  item.rank === 5
+                    ? 'text-amber-300 bg-amber-500/10 border-amber-500/30'
+                    : item.rank === 4
+                    ? 'text-purple-300 bg-purple-500/10 border-purple-500/30'
+                    : 'text-blue-300 bg-blue-500/10 border-blue-500/30'
+                }`}>
+                  {item.minRank && item.maxRank && item.minRank !== item.maxRank
+                    ? `${item.minRank}★–${item.maxRank}★`
+                    : `${item.rank}★ Set`}
                 </span>
-                <span className="flex items-center text-amber-300 font-bold">
-                  {item.rank} <Star className="w-3 h-3 fill-amber-300 text-amber-300 ml-0.5" />
+                <span className={`flex items-center font-bold ${
+                  item.rank === 5 ? 'text-amber-300' : item.rank === 4 ? 'text-purple-300' : 'text-blue-300'
+                }`}>
+                  {item.rank} <Star className={`w-3 h-3 ml-0.5 ${
+                    item.rank === 5 ? 'fill-amber-300 text-amber-300' : item.rank === 4 ? 'fill-purple-300 text-purple-300' : 'fill-blue-300 text-blue-300'
+                  }`} />
                 </span>
               </div>
 
@@ -259,17 +277,26 @@ export const ArchiveReliquaryView: React.FC = () => {
                   <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/30 p-2 flex-shrink-0 shadow-xl overflow-hidden flex items-center justify-center">
                     <img
                       src={
-                        detailData?.icon
-                          ? detailData.icon.startsWith('http')
-                            ? detailData.icon
-                            : `https://gi.yatta.moe/assets/UI/${detailData.icon}.png`
-                          : localSet?.iconUrl || 'https://gi.yatta.moe/assets/UI/UI_RelicIcon_15001_4.png'
+                        detailData?.icon ||
+                        activeSet?.icon ||
+                        (detailData?.filename ? `./assets/${detailData.filename}.png` : '') ||
+                        localSet?.iconUrl ||
+                        'https://enka.network/ui/UI_RelicIcon_15001_4.png'
                       }
-                      alt={detailData?.name || localSet?.name || 'Artifact Set'}
+                      alt={detailData?.name || activeSet?.name || localSet?.name || 'Artifact Set'}
                       className="w-full h-full object-contain filter drop-shadow-md"
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
-                        img.src = 'https://enka.network/ui/UI_RelicIcon_15001_4.png';
+                        const filename = detailData?.filename || activeSet?.filename;
+                        if (img.src.includes('yatta.moe') && filename) {
+                          img.src = `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${filename}.png`;
+                        } else if (img.src.includes('mihoyo.com') && filename) {
+                          img.src = `https://enka.network/ui/${filename}.png`;
+                        } else if (!img.src.includes('genshin.jmp.blue') && (detailData?.slug || activeSet?.slug)) {
+                          img.src = `https://genshin.jmp.blue/artifacts/${detailData?.slug || activeSet?.slug}/flower-of-life`;
+                        } else {
+                          img.src = 'https://enka.network/ui/UI_RelicIcon_15001_4.png';
+                        }
                       }}
                     />
                   </div>

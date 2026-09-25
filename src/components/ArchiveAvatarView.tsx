@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Character } from '../types';
-import { INITIAL_CHARACTERS } from '../data/characters';
 import AVATARS from '../data/avatars.json';
 import { Search, Star, Filter, Sparkles, X, Shield, Zap, User, BookOpen, Mic } from 'lucide-react';
 import { GenshinTextRenderer } from './GenshinTextRenderer';
-import { formatElementType, formatWeaponType } from '../services/amberService';
+import { formatElementType, formatWeaponType, formatRegionName } from '../services/amberService';
 
 export const ArchiveAvatarView: React.FC = () => {
   const [items, setItems] = useState<any[]>(AVATARS);
@@ -12,6 +11,7 @@ export const ArchiveAvatarView: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedElement, setSelectedElement] = useState<string>('All');
   const [selectedWeapon, setSelectedWeapon] = useState<string>('All');
+  const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [selectedRarity, setSelectedRarity] = useState<number | 'All'>('All');
   const [selectedCharId, setSelectedCharIndex] = useState<string | number | null>(null);
   const [detailData, setDetailData] = useState<any>(null);
@@ -28,15 +28,9 @@ export const ArchiveAvatarView: React.FC = () => {
     setDetailTab('profile');
     setDetailLoading(true);
     
-    // In static mode, we look up details from our local pre-compiled data
+    // Look up details from our local pre-compiled data
     const char = AVATARS.find(c => c.id == id || c.name.toLowerCase() === id.toString().toLowerCase());
-    
-    if (char) {
-      setDetailData(char);
-    } else {
-      const local = INITIAL_CHARACTERS.find((c: Character) => c.id === id || c.name.toLowerCase() === id.toString().toLowerCase());
-      setDetailData(local || null);
-    }
+    setDetailData(char || null);
     setDetailLoading(false);
   };
 
@@ -44,14 +38,17 @@ export const ArchiveAvatarView: React.FC = () => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesElement =
       selectedElement === 'All' ||
-      formatElementType(item.element).toLowerCase() === selectedElement.toLowerCase() ||
-      (formatElementType(item.element) === 'Multi' && selectedElement !== 'All');
+      formatElementType(item.element).toLowerCase() === selectedElement.toLowerCase();
     const matchesWeapon =
       selectedWeapon === 'All' ||
       formatWeaponType(item.weaponType).toLowerCase() === selectedWeapon.toLowerCase();
+    const itemRegion = formatRegionName(item.region, item.name);
+    const matchesRegion =
+      selectedRegion === 'All' ||
+      itemRegion.toLowerCase() === selectedRegion.toLowerCase();
     const matchesRarity = selectedRarity === 'All' || item.rank === selectedRarity;
 
-    return matchesSearch && matchesElement && matchesWeapon && matchesRarity;
+    return matchesSearch && matchesElement && matchesWeapon && matchesRegion && matchesRarity;
   });
 
   const parseVersion = (v?: string | number): number => {
@@ -65,16 +62,22 @@ export const ArchiveAvatarView: React.FC = () => {
 
   const sortedItems = [...filteredItems].sort((a, b) => {
     if (sortBy === 'release-desc') {
+      const relA = typeof a.release === 'number' ? a.release : (parseVersion(a.version) * 100000000);
+      const relB = typeof b.release === 'number' ? b.release : (parseVersion(b.version) * 100000000);
+      if (relB !== relA) return relB - relA;
       const vA = parseVersion(a.version);
       const vB = parseVersion(b.version);
       if (vB !== vA) return vB - vA;
-      return a.name.localeCompare(b.name);
+      return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'release-asc') {
+      const relA = typeof a.release === 'number' ? a.release : (parseVersion(a.version) * 100000000);
+      const relB = typeof b.release === 'number' ? b.release : (parseVersion(b.version) * 100000000);
+      if (relA !== relB) return relA - relB;
       const vA = parseVersion(a.version);
       const vB = parseVersion(b.version);
       if (vA !== vB) return vA - vB;
-      return a.name.localeCompare(b.name);
+      return (b.rank || 0) - (a.rank || 0) || a.name.localeCompare(b.name);
     }
     if (sortBy === 'name-asc') {
       return a.name.localeCompare(b.name);
@@ -86,12 +89,18 @@ export const ArchiveAvatarView: React.FC = () => {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankB !== rankA) return rankB - rankA;
+      const relA = typeof a.release === 'number' ? a.release : 0;
+      const relB = typeof b.release === 'number' ? b.release : 0;
+      if (relB !== relA) return relB - relA;
       return a.name.localeCompare(b.name);
     }
     if (sortBy === 'rarity-asc') {
       const rankA = a.rank || 0;
       const rankB = b.rank || 0;
       if (rankA !== rankB) return rankA - rankB;
+      const relA = typeof a.release === 'number' ? a.release : 0;
+      const relB = typeof b.release === 'number' ? b.release : 0;
+      if (relB !== relA) return relB - relA;
       return a.name.localeCompare(b.name);
     }
     return 0;
@@ -112,8 +121,8 @@ export const ArchiveAvatarView: React.FC = () => {
     }
   };
 
-  const localChar = INITIAL_CHARACTERS.find((c: Character) => c.id === selectedCharId || c.name.toLowerCase() === selectedCharId?.toString().toLowerCase());
   const activeChar = items.find((c) => c.id === selectedCharId || c.name.toLowerCase() === selectedCharId?.toString().toLowerCase());
+  const localChar = activeChar;
 
   return (
     <div className="space-y-6">
@@ -138,7 +147,7 @@ export const ArchiveAvatarView: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 bg-slate-900/90 border border-slate-800 rounded-2xl backdrop-blur-md space-y-4 shadow-lg">
+      <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl space-y-4 shadow-lg">
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -197,41 +206,67 @@ export const ArchiveAvatarView: React.FC = () => {
           </div>
         </div>
 
-        {/* Element & Weapon Row */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80 text-xs">
-          <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] mr-1 flex items-center gap-1">
-            <Filter className="w-3 h-3 text-amber-400" /> Element:
-          </span>
-          {['All', 'Pyro', 'Hydro', 'Anemo', 'Electro', 'Dendro', 'Cryo', 'Geo'].map((elem) => (
-            <button
-              key={elem}
-              onClick={() => setSelectedElement(elem)}
-              className={`px-2.5 py-1 rounded-lg border font-medium transition-all ${
-                selectedElement === elem
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-400'
-                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
-              }`}
-            >
-              {elem}
-            </button>
-          ))}
+        {/* Element & Weapon & Region Filters */}
+        <div className="space-y-2 pt-2 border-t border-slate-800/80 text-xs">
+          {/* Element Row */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] w-16 flex items-center gap-1">
+              <Filter className="w-3 h-3 text-amber-400" /> Element:
+            </span>
+            {['All', 'Pyro', 'Hydro', 'Anemo', 'Electro', 'Dendro', 'Cryo', 'Geo'].map((elem) => (
+              <button
+                key={elem}
+                onClick={() => setSelectedElement(elem)}
+                className={`px-2.5 py-1 rounded-lg border font-medium transition-all ${
+                  selectedElement === elem
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-400'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                {elem}
+              </button>
+            ))}
+          </div>
 
-          <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] ml-2 mr-1">
-            Weapon:
-          </span>
-          {['All', 'Sword', 'Claymore', 'Polearm', 'Bow', 'Catalyst'].map((w) => (
-            <button
-              key={w}
-              onClick={() => setSelectedWeapon(w)}
-              className={`px-2.5 py-1 rounded-lg border font-medium transition-all ${
-                selectedWeapon === w
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-400'
-                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
-              }`}
-            >
-              {w}
-            </button>
-          ))}
+          {/* Weapon Row */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] w-16">
+              Weapon:
+            </span>
+            {['All', 'Sword', 'Claymore', 'Polearm', 'Bow', 'Catalyst'].map((w) => (
+              <button
+                key={w}
+                onClick={() => setSelectedWeapon(w)}
+                className={`px-2.5 py-1 rounded-lg border font-medium transition-all ${
+                  selectedWeapon === w
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-400'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                {w}
+              </button>
+            ))}
+          </div>
+
+          {/* Region Row */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] w-16">
+              Region:
+            </span>
+            {['All', 'Mondstadt', 'Liyue', 'Inazuma', 'Sumeru', 'Fontaine', 'Natlan', 'Snezhnaya', 'Nod-Krai', 'Outlander'].map((reg) => (
+              <button
+                key={reg}
+                onClick={() => setSelectedRegion(reg)}
+                className={`px-2.5 py-1 rounded-lg border font-medium transition-all ${
+                  selectedRegion === reg
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-400'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                {reg}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -273,25 +308,53 @@ export const ArchiveAvatarView: React.FC = () => {
                 </div>
 
                 {/* Character Icon Frame */}
-                <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-slate-800 p-1 group-hover:border-amber-400/60 transition-colors">
-                  <img
-                    src={item.icon}
-                    alt={item.name}
-                    className="w-full h-full object-cover rounded-xl"
-                    onError={(e) => {
-                      const img = e.target as HTMLImageElement;
-                      if (img.src.includes('yatta.moe') && item.filename) {
-                        img.src = `https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/${item.filename}.png`;
-                      } else if (img.src.includes('mihoyo.com') && item.filename) {
-                        img.src = `https://enka.network/ui/${item.filename}.png`;
-                      } else if (!img.src.includes('genshin.jmp.blue') && item.slug) {
-                        img.src = `https://genshin.jmp.blue/characters/${item.slug}/icon`;
-                      } else {
-                        img.src = 'https://enka.network/ui/UI_AvatarIcon_Paimon.png';
-                      }
-                    }}
-                  />
-                </div>
+                {item.dualIcon || item.name === 'Traveler' ? (
+                  <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-slate-800 p-0.5 group-hover:border-amber-400/60 transition-colors overflow-hidden flex shadow-inner">
+                    <div className="w-1/2 h-full overflow-hidden border-r border-amber-500/30 relative">
+                      <img
+                        src={item.icon || './assets/UI_AvatarIcon_PlayerBoy.png'}
+                        alt="Aether"
+                        className="w-[200%] max-w-none h-full object-cover object-left"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerBoy.png';
+                        }}
+                      />
+                    </div>
+                    <div className="w-1/2 h-full overflow-hidden relative">
+                      <img
+                        src={item.femaleIcon || './assets/UI_AvatarIcon_PlayerGirl.png'}
+                        alt="Lumine"
+                        className="w-[200%] max-w-none h-full object-cover -translate-x-1/2"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerGirl.png';
+                        }}
+                      />
+                    </div>
+                    <span className="absolute bottom-1 right-1 bg-slate-950/90 px-1 py-0.5 rounded text-[8px] font-bold text-amber-300 border border-amber-500/40">
+                      Dual
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-slate-800 p-1 group-hover:border-amber-400/60 transition-colors">
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        if (img.src.includes('yatta.moe') && item.filename) {
+                          img.src = `https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/${item.filename}.png`;
+                        } else if (img.src.includes('mihoyo.com') && item.filename) {
+                          img.src = `https://enka.network/ui/${item.filename}.png`;
+                        } else if (!img.src.includes('genshin.jmp.blue') && item.slug) {
+                          img.src = `https://genshin.jmp.blue/characters/${item.slug}/icon`;
+                        } else {
+                          img.src = 'https://enka.network/ui/UI_AvatarIcon_Paimon.png';
+                        }
+                      }}
+                    />
+                  </div>
+                )}
 
                 {/* Name & Weapon Type */}
                 <div className="w-full text-center space-y-0.5">
@@ -332,22 +395,64 @@ export const ArchiveAvatarView: React.FC = () => {
               <div className="space-y-6">
                 {/* Header Card */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-4 border-b border-slate-800">
-                  <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/30 p-1 flex-shrink-0 shadow-xl overflow-hidden group">
-                    <img
-                      src={
-                        detailData?.filename
-                          ? `/assets/${detailData.filename}.png`
-                          : (detailData?.icon || activeChar?.icon || localChar?.iconUrl || 'https://enka.network/ui/UI_AvatarIcon_Paimon.png')
-                      }
-                      loading="lazy"
-                      alt={detailData?.name || activeChar?.name || localChar?.name}
-                      className="w-full h-full object-cover rounded-xl"
-                      onError={(e) => {
-                        const img = e.target as HTMLImageElement;
-                        img.src = activeChar?.icon || 'https://enka.network/ui/UI_AvatarIcon_Paimon.png';
-                      }}
-                    />
-                  </div>
+                  {detailData?.dualIcon || activeChar?.dualIcon || localChar?.name === 'Traveler' ? (
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/40 p-1 shadow-xl overflow-hidden group flex flex-col items-center justify-center">
+                        <img
+                          src="./assets/UI_AvatarIcon_PlayerBoy.png"
+                          alt="Aether"
+                          className="w-full h-full object-cover rounded-xl"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerBoy.png';
+                          }}
+                        />
+                        <span className="absolute bottom-1 bg-slate-950/90 text-[9px] font-bold text-amber-300 px-1.5 py-0.5 rounded border border-amber-500/30">
+                          Aether
+                        </span>
+                      </div>
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-cyan-500/40 p-1 shadow-xl overflow-hidden group flex flex-col items-center justify-center">
+                        <img
+                          src="./assets/UI_AvatarIcon_PlayerGirl.png"
+                          alt="Lumine"
+                          className="w-full h-full object-cover rounded-xl"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerGirl.png';
+                          }}
+                        />
+                        <span className="absolute bottom-1 bg-slate-950/90 text-[9px] font-bold text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30">
+                          Lumine
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/30 p-1 flex-shrink-0 shadow-xl overflow-hidden group">
+                      <img
+                        src={
+                          detailData?.icon ||
+                          activeChar?.icon ||
+                          (detailData?.filename ? `./assets/${detailData.filename}.png` : '') ||
+                          localChar?.iconUrl ||
+                          'https://enka.network/ui/UI_AvatarIcon_Paimon.png'
+                        }
+                        loading="lazy"
+                        alt={detailData?.name || activeChar?.name || localChar?.name}
+                        className="w-full h-full object-cover rounded-xl"
+                        onError={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          const filename = detailData?.filename || activeChar?.filename;
+                          if (img.src.includes('yatta.moe') && filename) {
+                            img.src = `https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/${filename}.png`;
+                          } else if (img.src.includes('mihoyo.com') && filename) {
+                            img.src = `https://enka.network/ui/${filename}.png`;
+                          } else if (!img.src.includes('genshin.jmp.blue') && (detailData?.slug || activeChar?.slug)) {
+                            img.src = `https://genshin.jmp.blue/characters/${detailData?.slug || activeChar?.slug}/icon`;
+                          } else {
+                            img.src = 'https://enka.network/ui/UI_AvatarIcon_Paimon.png';
+                          }
+                        }}
+                      />
+                    </div>
+                  )}
 
                   <div className="space-y-1.5 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
@@ -371,7 +476,7 @@ export const ArchiveAvatarView: React.FC = () => {
                     <div className="flex items-center gap-3 text-xs text-slate-400 flex-wrap">
                       <span>Weapon: <strong className="text-slate-200">{formatWeaponType(detailData?.weaponType || localChar?.weaponType)}</strong></span>
                       <span>•</span>
-                      <span>Region / Affiliation: <strong className="text-amber-300">{detailData?.region || detailData?.affiliation || localChar?.region || 'Teyvat'}</strong></span>
+                      <span>Region: <strong className="text-amber-300">{formatRegionName(detailData?.region || localChar?.region, detailData?.name || localChar?.name)}</strong></span>
                       {detailData?.constellation && (
                         <>
                           <span>•</span>
@@ -383,41 +488,41 @@ export const ArchiveAvatarView: React.FC = () => {
                 </div>
 
                 {/* Mode Selector Tabs (Profile, Talent, Constellation) */}
-                <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+                <div className="grid grid-cols-3 gap-2 border-b border-slate-800 pb-3">
                   <button
                     onClick={() => setDetailTab('profile')}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                    className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
                       detailTab === 'profile'
-                        ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                        : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                        : 'bg-slate-950 text-slate-400 border-slate-800/90 hover:text-slate-200 hover:border-slate-700'
                     }`}
                   >
-                    <User className="w-4 h-4" />
-                    Profile
+                    <User className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>Profile</span>
                   </button>
 
                   <button
                     onClick={() => setDetailTab('talent')}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                    className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
                       detailTab === 'talent'
-                        ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                        : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                        : 'bg-slate-950 text-slate-400 border-slate-800/90 hover:text-slate-200 hover:border-slate-700'
                     }`}
                   >
-                    <Zap className="w-4 h-4" />
-                    Talents {detailData?.skills?.length ? `(${detailData.skills.length + (detailData.passives?.length || 0)})` : ''}
+                    <Zap className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>Talents {detailData?.skills?.length ? `(${detailData.skills.length + (detailData.passives?.length || 0)})` : ''}</span>
                   </button>
 
                   <button
                     onClick={() => setDetailTab('constellation')}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                    className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
                       detailTab === 'constellation'
-                        ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                        : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                        : 'bg-slate-950 text-slate-400 border-slate-800/90 hover:text-slate-200 hover:border-slate-700'
                     }`}
                   >
-                    <Sparkles className="w-4 h-4" />
-                    Constellation {detailData?.constellations?.length ? `(${detailData.constellations.length})` : ''}
+                    <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>Constellations {detailData?.constellations?.length ? `(${detailData.constellations.length})` : ''}</span>
                   </button>
                 </div>
 
@@ -454,7 +559,7 @@ export const ArchiveAvatarView: React.FC = () => {
                           <div className="flex justify-between p-2 bg-slate-900 rounded-lg">
                             <span className="text-slate-400">Affiliation / Native</span>
                             <span className="font-bold text-amber-300">
-                              {detailData?.affiliation || detailData?.fetter?.native || localChar?.region || 'Teyvat'}
+                              {detailData?.affiliation || detailData?.fetter?.native || formatRegionName(detailData?.region || localChar?.region, detailData?.name || localChar?.name)}
                             </span>
                           </div>
                           <div className="flex justify-between p-2 bg-slate-900 rounded-lg">
@@ -464,47 +569,78 @@ export const ArchiveAvatarView: React.FC = () => {
                             </span>
                           </div>
                           <div className="flex justify-between p-2 bg-slate-900 rounded-lg">
+                            <span className="text-slate-400">Release</span>
+                            <span className="font-bold text-slate-100">
+                              {detailData?.releaseDate
+                                ? `v${detailData.version || '1.0'} (${detailData.releaseDate})`
+                                : detailData?.version
+                                ? `v${detailData.version}`
+                                : 'Launch (v1.0)'}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-2 bg-slate-900 rounded-lg">
                             <span className="text-slate-400">Region</span>
                             <span className="font-bold text-slate-100">
-                              {detailData?.region || localChar?.region || 'Teyvat'}
+                              {formatRegionName(detailData?.region || localChar?.region, detailData?.name || localChar?.name)}
                             </span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Voice Actors (CV) */}
+                      {/* Voice Actors (VA) */}
                       <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-3">
                         <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-                          <Mic className="w-4 h-4" /> Voice Actors (CV)
+                          <Mic className="w-4 h-4" /> Voice Actors (VA)
                         </h4>
                         <div className="space-y-2 text-xs">
                           <div className="flex justify-between items-center p-2 bg-slate-900 rounded-lg">
-                            <span className="text-slate-400 font-medium">🇺🇸 English CV</span>
+                            <span className="text-slate-400 font-medium">🇺🇸 English VA</span>
                             <span className="font-bold text-slate-100">
-                              {detailData?.fetter?.cv?.EN || 'English Cast'}
+                              {detailData?.fetter?.cv?.EN || detailData?.cv?.english || 'English Cast'}
                             </span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-slate-900 rounded-lg">
-                            <span className="text-slate-400 font-medium">🇯🇵 Japanese CV</span>
+                            <span className="text-slate-400 font-medium">🇯🇵 Japanese VA</span>
                             <span className="font-bold text-slate-100">
-                              {detailData?.fetter?.cv?.JP || 'Japanese Cast'}
+                              {detailData?.fetter?.cv?.JP || detailData?.cv?.japanese || 'Japanese Cast'}
                             </span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-slate-900 rounded-lg">
-                            <span className="text-slate-400 font-medium">🇨🇳 Chinese CV</span>
+                            <span className="text-slate-400 font-medium">🇨🇳 Chinese VA</span>
                             <span className="font-bold text-slate-100">
-                              {detailData?.fetter?.cv?.CHS || 'Chinese Cast'}
+                              {detailData?.fetter?.cv?.CHS || detailData?.cv?.chinese || 'Chinese Cast'}
                             </span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-slate-900 rounded-lg">
-                            <span className="text-slate-400 font-medium">🇰🇷 Korean CV</span>
+                            <span className="text-slate-400 font-medium">🇰🇷 Korean VA</span>
                             <span className="font-bold text-slate-100">
-                              {detailData?.fetter?.cv?.KR || 'Korean Cast'}
+                              {detailData?.fetter?.cv?.KR || detailData?.cv?.korean || 'Korean Cast'}
                             </span>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    {/* Character Voice Lines / Lore Dialogues */}
+                    {detailData?.voiceLines && detailData.voiceLines.length > 0 && (
+                      <div className="p-5 bg-slate-950 border border-slate-800 rounded-2xl space-y-3">
+                        <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                          <Mic className="w-4 h-4 text-amber-400" /> Featured Voice Lines & Dialogue Records ({detailData.voiceLines.length})
+                        </h4>
+                        <div className="space-y-2.5 max-h-64 overflow-y-auto pr-1">
+                          {detailData.voiceLines.map((vl: any, idx: number) => (
+                            <div key={idx} className="p-3 bg-slate-900/90 border border-slate-800/80 rounded-xl space-y-1">
+                              <span className="text-[11px] font-bold text-amber-300 flex items-center gap-1">
+                                ✦ {vl.title}
+                              </span>
+                              <p className="text-xs text-slate-300 italic leading-relaxed">
+                                "{vl.description}"
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 

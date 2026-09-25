@@ -1,0 +1,722 @@
+[
+  {
+    "chapter": "Prologue",
+    "chapterTitle": "The Outlander Who Caught the Wind",
+    "region": "Mondstadt",
+    "archon": "Barbatos (Venti)",
+    "ideal": "Freedom",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "The Outlander Who Caught the Wind",
+        "requiredAR": 1,
+        "description": "After arriving on the shores of Teyvat, the Traveler meets Paimon and journeys to the city of Mondstadt, encountering Stormterror and the Knights of Favonius.",
+        "quests": [
+          "Bird's Eye View",
+          "Unexpected Power",
+          "Forest Rendezvous",
+          "Wind-Riding Knight",
+          "Going Upon the Breeze",
+          "City of Freedom",
+          "Dragon Storm",
+          "Knights of Favonius (Quest)"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "For a Tomorrow Without Tears",
+        "requiredAR": 10,
+        "description": "The Traveler assists the bard Venti in retrieving the Holy Lyre der Himmel from the Knights' cathedral and uncovering the true nature of Dvalin's corruption.",
+        "quests": [
+          "Shadow Over Mondstadt",
+          "Unexpected Encounter",
+          "That Green Fellow",
+          "Let the Wind Lead (Quest)",
+          "Venti's Plan",
+          "Venti's New Plan",
+          "Wild Escape",
+          "Behind the Scenes",
+          "Chasing Shadows",
+          "State of the Holy Lyre der Himmel",
+          "Crystal Tears",
+          "Reunion With the Dragon"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "Song of the Dragon and Freedom",
+        "requiredAR": 18,
+        "description": "Together with Diluc, Jean, and Venti, the Traveler breaches the storm barrier of Old Mondstadt to purify Stormterror and confront the Fatui Harbinger Signora.",
+        "quests": [
+          "Abyss Mage (Quest)",
+          "Hurdle",
+          "Empty Abode",
+          "Light Guiding Ceremony",
+          "Calm Before the Storm",
+          "A Long Shot",
+          "When the Wind Dies Down",
+          "Ending Note"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter I",
+    "chapterTitle": "Farewell, Archaic Lord",
+    "region": "Liyue",
+    "archon": "Morax (Zhongli / Rex Lapis)",
+    "ideal": "Contracts",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "Of the Land Amidst Monoliths",
+        "requiredAR": 23,
+        "description": "The Traveler visits Liyue Harbor during the Rite of Descension, witnessing the assassination of Rex Lapis and seeking refuge among the Adepti in Jueyun Karst.",
+        "quests": [
+          "Rite of Descension",
+          "An Impromptu Change of Plan",
+          "Dust to Dust"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Farewell, Archaic Lord",
+        "requiredAR": 25,
+        "description": "Partnering with the mysterious consultant Zhongli and Childe of the Fatui, the Traveler prepares the funeral rites for Rex Lapis across the vibrant landscapes of Liyue.",
+        "quests": [
+          "An Organization Known as Wangsheng",
+          "Moonfinger",
+          "Three Poignant Perfumes",
+          "The Realm Within",
+          "Downtown",
+          "Guizhong (Quest)",
+          "Zhongli's Treat"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "A New Star Approaches",
+        "requiredAR": 28,
+        "description": "The conflict between the Fatui, Adepti, and Liyue Qixing reaches its zenith as Osial, Overlord of the Vortex, is unleashed upon the harbor.",
+        "quests": [
+          "The Floating Palace",
+          "Equilibrium",
+          "Solitary Fragrance",
+          "Heart of Glaze",
+          "Turning Point",
+          "The Fond Farewell"
+        ]
+      },
+      {
+        "actNumber": "Act IV (Prelude)",
+        "actTitle": "Bough Keeper: Dainsleif",
+        "requiredAR": 28,
+        "description": "The Traveler meets the mysterious wanderer Dainsleif and begins tracking the clandestine movements of the Abyss Order across Mondstadt.",
+        "quests": []
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "We Will Be Reunited",
+        "requiredAR": 28,
+        "description": "Venturing into an inverted statue domain, the Traveler faces the Abyss Herald and comes face-to-face with their lost sibling.",
+        "quests": [
+          "Involuntary Sacrifice",
+          "A Herald Without Adherents",
+          "Dishonorable Trial",
+          "A Soul Set Apart"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter II",
+    "chapterTitle": "Omnipresence Over Mortals",
+    "region": "Inazuma",
+    "archon": "Beelzebul (Raiden Ei)",
+    "ideal": "Eternity",
+    "acts": [
+      {
+        "actNumber": "Prologue",
+        "actTitle": "Autumn Winds, Scarlet Leaves",
+        "requiredAR": 30,
+        "description": "Though you have returned from the darkness of that cave into the light, the pain of parting remains in your heart.<br>What are the gods' motives? Where did your sibling go? Where may the truth of this world be found?<br>Whatever the case may be, you are resolved to continue onward &mdash; to \"reach the end of your journey.\"",
+        "quests": [
+          "A Path Through the Storm",
+          "The Crux Clash (Quest)",
+          "Follow the Wind"
+        ]
+      },
+      {
+        "actNumber": "Act I",
+        "actTitle": "The Immovable God and the Eternal Euthymia",
+        "requiredAR": 30,
+        "description": "Upon reaching Ritou, the Traveler navigates the isolationist Sakoku Decree, meets the Kamisato Clan, and joins the struggle against the Vision Hunt Decree.",
+        "quests": [
+          "Setting Sail",
+          "Confessions of an Outlander",
+          "Ritou Escape Plan",
+          "Three Wishes",
+          "The Meaning of Meaningless Waiting",
+          "To Treat the Well-Meaning Well",
+          "A Swordmaster's Path Is Paved With Broken Blades",
+          "A Flower Blooms in a Prison"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Stillness, the Sublimation of Shadow",
+        "requiredAR": 30,
+        "description": "The Traveler flees the Tenryou Commission to Watatsumi Island, uniting with General Gorou and Sangonomiya Kokomi's resistance army on the frontlines of Kannazuka.",
+        "quests": [
+          "Amidst Stormy Judgment",
+          "In the Name of the Resistance"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "Omnipresence Over Mortals",
+        "requiredAR": 30,
+        "description": "With the aid of Yae Miko, the Traveler infiltrates Tenshukaku, challenges Signora to a duel before the throne, and enters the Plane of Euthymia to change the Raiden Shogun's eternal path.",
+        "quests": [
+          "Sword, Fish, Resistance",
+          "Those Who Yearn for the Gods' Gaze",
+          "Delusion (Chapter II)",
+          "The Servant's Path",
+          "Proof of Guilt",
+          "Blind Loyalty, Reckless Courage",
+          "Duel Before the Throne",
+          "The Omnipresent God",
+          "Wishes (Quest)"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "Requiem of the Echoing Depths",
+        "requiredAR": 30,
+        "description": "Divine calamity descended upon the ancient realm,<br>And within the deep darkness, a sorrowful reunion awaits.<br>We can no longer discern the roaring words of the guardians,<br>&mdash;Until the requiem resounds in the Abyss.",
+        "quests": [
+          "In the Depths, an Unexpected Reunion",
+          "The Grave of the Guarded",
+          "Memories of Inteyvat",
+          "The Black Serpent Knights' Glory"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter III",
+    "chapterTitle": "Truth Amongst the Pages of Purana",
+    "region": "Sumeru",
+    "archon": "Buer (Lesser Lord Kusanali / Nahida)",
+    "ideal": "Wisdom",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "Through Mists of Smoke and Forests Dark",
+        "requiredAR": 35,
+        "description": "Entering Sumeru through the rainforest, the Traveler experiences hallucination induced by spirit incense and meets Forest Watcher Tighnari before visiting Sumeru City.",
+        "quests": [
+          "A Forest of Change",
+          "Further Observation",
+          "Chronic Illness",
+          "Silent Seeker of Knowledge",
+          "The Trail of the God of Wisdom",
+          "Lost in Prosperity",
+          "Ever So Close"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "The Morn a Thousand Roses Brings",
+        "requiredAR": 35,
+        "description": "Trapped in the endless Samsara dream cycle of the Sabzeruz Festival, the Traveler and Nahida solve the Akasha mystery to celebrate Nilou's dance of devotion.",
+        "quests": [
+          "The Coming of the Sabzeruz Festival",
+          "The Arrival of the Sabzeruz Festival",
+          "The Continuation of the Sabzeruz Festival",
+          "The Samsara of the Sabzeruz Festival",
+          "The Causality of the Sabzeruz Festival",
+          "The Empty Illusions of the Sabzeruz Festival",
+          "The End of the Sabzeruz Festival",
+          "Dawn (Quest)"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "Dreams, Emptiness, Deception",
+        "requiredAR": 35,
+        "description": "\"The world as it is, and all that is in it &mdash; it is but a dream, empty and full of lies.\"<br>The Sabzeruz Festival samsara finally comes to an end.<br>The path to saving the god lies within the desert stars.<br>\"I am the lord of the scarlet soil. My deeds are world-renowned, and even the strong kneel before me!\"",
+        "quests": [
+          "Like a Triumphant Hero",
+          "The Gaze From a Certain God",
+          "The Four at Loggerheads"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "King Deshret and the Three Magi",
+        "requiredAR": 35,
+        "description": "Venturing into the Great Red Sand desert, the party unearths the ancient truth of King Deshret's sacrifice and gains the alliance of the desert Eremites.",
+        "quests": [
+          "The Missing Village Keepers",
+          "Cry From the Eleazar Hospital",
+          "Secret of the Scorching Desert"
+        ]
+      },
+      {
+        "actNumber": "Act V",
+        "actTitle": "Akasha Pulses, the Kalpa Flame Rises",
+        "requiredAR": 35,
+        "description": "\"Rukkhadevata formed the bones and flowing blood, and Kusanali the innards and beating heart. Thrice holy and sacred their goodness and grace, worthy of worship, of praise, of laud, of record.\"<br>\"In those days, Akasha ran not, the ashes of calamity had settled, and the past had become history.\"<br>This is the tale of \"Buer's\" First Sage.|Act Announcement",
+        "quests": [
+          "Through the Predawn Night",
+          "As by a God's Side",
+          "Jnagarbha Day",
+          "Where the Boat of Consciousness Lies",
+          "A Toast to Victory"
+        ]
+      },
+      {
+        "actNumber": "Act VI",
+        "actTitle": "Caribert",
+        "requiredAR": 35,
+        "description": "This world is filled with those who would oppose fate, while the one who understands fate smiles faintly down upon them.<br>If the one who weaves fate may be born here, then let the one who witnesses fate see it all.",
+        "quests": [
+          "Destined Encounter",
+          "Fortune-Mocking Pedigree",
+          "A Lamenter at Fate's End",
+          "Portended Fate"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter IV",
+    "chapterTitle": "Masquerade of the Guilty",
+    "region": "Fontaine",
+    "archon": "Focalors (Furina / Neuvillette)",
+    "ideal": "Justice",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "Prelude of Blancheur and Noirceur",
+        "requiredAR": 40,
+        "description": "The Traveler arrives in the Court of Fontaine, attends a magic show by Lyney and Lynette at the Opera Epiclese, and takes the stand as defense attorney.",
+        "quests": [
+          "Soloist's Prologue",
+          "The City of Rains and Remembrance",
+          "Lies Cast Shadows Under Gathered Lights"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "As Light Rain Falls Without Reason",
+        "requiredAR": 40,
+        "description": "Investigating the serial disappearances of young women with Navia and the Spina di Rosula, the Traveler uncovers the truth of the Primordial Sea water.",
+        "quests": [
+          "Like the Faint Moonlight of Yesteryear",
+          "The Truth, Lost With the Rain",
+          "When All Return to the Waters"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "To the Stars Shining in the Depths",
+        "requiredAR": 40,
+        "description": "The Traveler is sentenced to the underwater Fortress of Meropide as an undercover operative for Chief Justice Neuvillette to investigate the Forbidden Zone.",
+        "quests": [
+          "A Tea Party Most Thorny",
+          "Fortress of Meropide (Quest)",
+          "The Proscribed, Hidden in Plain Sight",
+          "Lost in Deep Seas"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "Cataclysm's Quickening",
+        "requiredAR": 40,
+        "description": "As the Primordial Sea ruptures the foundation of the Fortress, Wriothesley and Neuvillette seal the floodgate while the Fatui Harbinger Arlecchino makes her move.",
+        "quests": [
+          "Into the Deepwater Murk",
+          "The Truth Shrouded in Shadow",
+          "Secret Keepers and Forbidden Zones",
+          "Calamitous Tread",
+          "A Moment's Respite"
+        ]
+      },
+      {
+        "actNumber": "Act V",
+        "actTitle": "Masquerade of the Guilty",
+        "requiredAR": 40,
+        "description": "The prophecy comes to pass: the trial of the Hydro Archon commences, the All-Devouring Narwhal rises, and Focalors' five-hundred-year grand masquerade concludes.",
+        "quests": [
+          "Deluge of Wrathful Waters",
+          "Meeting Is Also Parting",
+          "Hunters, Prophets",
+          "Apocalypse",
+          "The Opera of Noirceur and Blancheur",
+          "Finale"
+        ]
+      },
+      {
+        "actNumber": "Act VI",
+        "actTitle": "Bedtime Story",
+        "requiredAR": 40,
+        "description": "After listening to the bedtime story that day, all the hilichurls had a dream.<br>The young soul waved goodbye, and the people and sun slept together warmly.",
+        "quests": [
+          "Cold Case Commission",
+          "Memories That Should Not Exist",
+          "World-Order Narration"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter V",
+    "chapterTitle": "Incandescent Ode of Resurrection",
+    "region": "Natlan",
+    "archon": "Habrote / Mavuika (Pyro Archon)",
+    "ideal": "War & Rebirth",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "Flowers Resplendent on the Sun-Scorched Sojourn",
+        "requiredAR": 40,
+        "description": "The Traveler enters the volcanic lands of Natlan, bonded with a Saurian companion, and competes in the Sacred Pilgrimage alongside Kachina and Mualani.",
+        "quests": [
+          "Natlan! A New Adventure",
+          "Pilgrimage of the Return of the Sacred Flame (Quest)",
+          "Home of the Hot Springs"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Black Stone Under a White Stone",
+        "requiredAR": 40,
+        "description": "Venturing into the Night Kingdom to rescue fallen warriors, the Traveler witnesses the abyss encroaching upon the Sacred Flame of the Stadium.",
+        "quests": [
+          "A Decision (Archon Quest)",
+          "To Reclaim an Ancient Name",
+          "Echoes of Life",
+          "Into Eternal Night",
+          "Past and Future"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "Beyond the Smoke and Mirrors",
+        "requiredAR": 40,
+        "description": "Investigating the Masters of the Night-Wind tribe with Xilonen and Citlali to fortify the Wayob barriers against the abyssal invasion.",
+        "quests": [
+          "All Names are Noble",
+          "To Whence the Smoke Drifts",
+          "The Flickering Light Splits in Twain"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "The Rainbow Destined to Burn",
+        "requiredAR": 40,
+        "description": "The six tribes of Natlan unite as Captain Capitano and the Fatui join forces with Archon Mavuika to defend the Stadium from total collapse.",
+        "quests": [
+          "Beneath the Secret Source",
+          "As One We Watch the Setting Sun",
+          "The Surging Darkness",
+          "Despair Engulfs the Heavens",
+          "No One Fights Alone",
+          "A Fuel Named \"Fate\""
+        ]
+      },
+      {
+        "actNumber": "Interlude",
+        "actTitle": "All Fires Fuel the Flame",
+        "requiredAR": 40,
+        "description": "A profound interlude between the tribal armies preparing the defense of the Sacred Flame before the descent into the Night Kingdom.",
+        "quests": [
+          "For the Same Land"
+        ]
+      },
+      {
+        "actNumber": "Act V",
+        "actTitle": "Incandescent Ode of Resurrection",
+        "requiredAR": 40,
+        "description": "The path of war approaches its end, all eyes fixed upon the hero's back.<br>The crushing burden of \"fate\" and \"rules\" weighs heavy upon this place, making each step forward a staggering effort.<br>Yet the sun has proclaimed its intention — to burn away both shackles and the self, and in their place, usher in a new chapter for humankind...",
+        "quests": [
+          "Subterranean Ruins",
+          "As the Sun Rises and Sets",
+          "Journey of Stars and Flames",
+          "Where All Hopes Lie",
+          "When All Becomes a Monument"
+        ]
+      },
+      {
+        "actNumber": "Act VI",
+        "actTitle": "A Space and Time for You",
+        "requiredAR": 40,
+        "description": "The end of a journey is also its beginning. Time is meaningless.<br>You and I are clearly looking at the same view. Space is meaningless.<br>...Until your destiny and mine collide, and twine all those threads together.",
+        "quests": [
+          "The Key That Unlocks Fate",
+          "\"Savior\"",
+          "A Space and Time Without You"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Song of the Welkin Moon",
+    "chapterTitle": "Song of the Welkin Moon",
+    "region": "Nod-Krai",
+    "archon": "Columbina / Lunar Sovereigns",
+    "ideal": "Loom of Fate & Moonlight",
+    "acts": [
+      {
+        "actNumber": "Prelude",
+        "actTitle": "The Journey Home",
+        "requiredAR": 40,
+        "description": "Moonlight paves the path ahead, and a new journey is about to unfold. Yet before you cross the sea to Nod-Krai, an unexpected visitor arrives in Natlan...<br>All things are but wayfarers in this world — no place is their home. A thousand years pass, yet all remain transient.",
+        "quests": [
+          "Flamelets",
+          "Smoldering",
+          "Searing"
+        ]
+      },
+      {
+        "actNumber": "Act I",
+        "actTitle": "A Dance of Snowy Tides and Hoarfrost Groves",
+        "requiredAR": 40,
+        "description": "This is where the moon rises — an \"elysium\" for adventurers.<br>The moon's radiance is distant, the snow-ashen groves are lush, and secrets echo throughout the land like an ancient song.<br>Go forth now and listen to the melody beneath the moonlight.",
+        "quests": [
+          "Where the Moon Rises",
+          "Reunion Beneath the Moonlight",
+          "In the Shadows of Night"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Elegy of Dust and Lamplight",
+        "requiredAR": 40,
+        "description": "Uncovering the forgotten lore of the Moon Sisters amidst the ancient dust and lamplit ruins.",
+        "quests": [
+          "Fulminations and Undercurrents",
+          "The Dark Side of Memory",
+          "One There Was, Who Hunted the Moon",
+          "The Ashen-White Order Burns",
+          "Rest Beyond Reach"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "A Nation That Doesn't Exist",
+        "requiredAR": 40,
+        "description": "The howling coyotes seek the moon's fading trail, while shadows hang heavy upon every heart.<br>Ancient memories resurface before our eyes, and the riddles left by history still drive countless souls to struggle onward in the torrent of fate.",
+        "quests": [
+          "Hidden in the Shadows",
+          "Special Operation",
+          "Everlasting As the Moon"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "An Elegy for Faded Moonlight",
+        "requiredAR": 40,
+        "description": "The tragic tale of the three lunar palaces and their shattering during the Primordial Cataclysm.",
+        "quests": [
+          "All Is Foretold",
+          "Dance of Death: Serpent and Scorpion",
+          "Echoes of Fate"
+        ]
+      },
+      {
+        "actNumber": "Act V",
+        "actTitle": "A Nocturne of the Far North",
+        "requiredAR": 40,
+        "description": "To defy fate, you may flee the clamor of the world and venture into the phantom night.<br>The moon's veil shrouds the silent river, while tranquil lanterns illuminate the path ahead.<br>Homeland is always there, calling out to every lost soul.",
+        "quests": [
+          "In the Shifting Light of the Moon",
+          "Ripples That Will Never Reach"
+        ]
+      },
+      {
+        "actNumber": "Act VI",
+        "actTitle": "Melting Moonlight in the Morning Mist",
+        "requiredAR": 40,
+        "description": "Breaking the eternal frost illusion to expose the true mechanism governing Teyvat's lunar cycle.",
+        "quests": [
+          "Where Does Her Name Rest?",
+          "The Night the Moon Returns Home",
+          "Return to the Moon",
+          "The Empty Courtyard"
+        ]
+      },
+      {
+        "actNumber": "Act VII",
+        "actTitle": "A Traveler on a Winter's Night",
+        "requiredAR": 40,
+        "description": "The moon's light dims, obscured by thick clouds gathering across the Nod-Krai sky — clouds shaped by conspiracy... <br>Where the false and the real intertwine, a battle for the fate of your companions and Nod-Krai has already begun... Will that true moonlight ever return to the land of its home?",
+        "quests": [
+          "Moonless Night",
+          "Where Our Space and Time Intersect",
+          "Tracing the Footsteps of the Past"
+        ]
+      },
+      {
+        "actNumber": "Act VIII",
+        "actTitle": "True Moon",
+        "requiredAR": 40,
+        "description": "The awakening of the True Moon and the descent of celestial light upon the northern hemisphere.",
+        "quests": [
+          "The First Sliver of Moonlight",
+          "Descending Moon",
+          "Welkin Moon's Homecoming"
+        ]
+      },
+      {
+        "actNumber": "Act IX",
+        "actTitle": "As All Falls to Emptiness",
+        "requiredAR": 40,
+        "description": "People describe wisdom in many different ways: an eternal garden, an imperishable monument, an ancient tree that reaches the sky. And from these they extract what they most desire: a flower, a stone, a leaf... <br>Wisdom also seeps into every dream, for better or for worse, flowing like a stream, projecting itself as the shadow of a tree over every corner of the world. <br>Thus, the catastrophe that lurks in dreams manifests itself... <br>Now, it is descending.",
+        "quests": [
+          "Where Flowers Awaken",
+          "A Divergence Leading to Oneself",
+          "Ancient Shadows Re-Emerge"
+        ]
+      },
+      {
+        "actNumber": "Act X",
+        "actTitle": "Truth Amongst the Pages of Purana",
+        "requiredAR": 40,
+        "description": "The grand synthesis uniting the wisdom of Sumeru, the lunar lineage of Nod-Krai, and the Traveler's celestial nature.",
+        "quests": []
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter VII",
+    "chapterTitle": "Everwinter Without Mercy",
+    "region": "Snezhnaya",
+    "archon": "The Tsaritsa (Cryo Archon / Anastasya)",
+    "ideal": "Love & Rebellion",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "Everwinter Without Mercy",
+        "requiredAR": 18,
+        "description": "Fierce winds and raging blizzards manifest the bitter cold of the snowland, so relentless that drives many travelers away.<br>In a place where life ought to fall into slumber, glowing light and monumental legacies pierce through the ice, rising tall and defiant amidst the snowland...<br>Expose yourself to its will — for those who strive to transcend must never seek survival in the shadow of pity.",
+        "quests": [
+          "Into the Wind, Into the Frigid North",
+          "Gunfire in the Silent Lands",
+          "Great Deeds on the Tundra",
+          "Silence Alone is Disfavored"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Wraith's Nocturne",
+        "requiredAR": 18,
+        "description": "Investigating the clandestine activities of the Fatui Harbingers and the phantom legions of the Cryo Archon.",
+        "quests": [
+          "The White Curtain Falls",
+          "Lelek's Confession",
+          "Winter's Mysterious Silence",
+          "Wraith's Nocturne (Quest)",
+          "Mistilteinn"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "White Night, Like a Dream Upon Waking",
+        "requiredAR": 45,
+        "description": "The rampaging monster has fallen, and Tsaritsa Anastasya has returned in triumph to Zapolyarny Palace.<br>However, with Project Stuzha put on hold, the treacherous curse of death, and the anxious people... Snezhnaya's dawn remains deeply sealed within the swirling snowstorm.<br>The bitter cold leaves no one who sets foot on the tundra any chance to stop. All they can do is keep moving until the dark clouds veiling the sky finally disperse.",
+        "quests": [
+          "Light and Shadow, Intertwined",
+          "Sparks Converging Upon the Tundra",
+          "One Move Left to Make"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "A Rekviem for the Underworld",
+        "requiredAR": 45,
+        "description": "The battle reaches the abyssal foundations beneath Snezhnaya as the Cryo Archon sounds the final horn of defiance.",
+        "quests": [
+          "Delusion (Chapter VII)",
+          "Etched in Time",
+          "Black Feathers Scattered at Parting"
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": "Chapter ??",
+    "chapterTitle": "The Dream Yet to Be Dreamed",
+    "region": "Khaenri'ah",
+    "archon": "King Irmin / Eclipse Dynasty",
+    "ideal": "Humanity & Origin",
+    "acts": [
+      {
+        "actNumber": "Act ?",
+        "actTitle": "The Dream Yet to Be Dreamed",
+        "requiredAR": 50,
+        "description": "Deep within the godless ruins of Khaenri'ah, the Traveler reaches the origin of the Cataclysm and the culmination of their journey.",
+        "quests": []
+      }
+    ]
+  },
+  {
+    "chapter": "Interlude Chapters",
+    "chapterTitle": "Echoes of Teyvat Chronicles",
+    "region": "Multi-Region",
+    "archon": "Cosmic Lore",
+    "ideal": "Truth",
+    "acts": [
+      {
+        "actNumber": "Act I",
+        "actTitle": "The Crane Returns on the Wind",
+        "requiredAR": 28,
+        "description": "As news of the Jade Chamber's reconstruction spreads, many merchants flock to Yujing Terrace.<br>Ningguang's reward raises the curtain on the competition, while dark undercurrents present a different sort of threat.<br>Will Liyue, now under human rule, withstand the coming tide? Will the one long separated from society find their place among people once more?<br>All will be revealed when the Jade Chamber rises once more.",
+        "quests": [
+          "Jade Chamber Rising",
+          "Seagaze Sunset",
+          "Bygones Times Like Dust Passing",
+          "Where the Heart Finds Rest"
+        ]
+      },
+      {
+        "actNumber": "Act II",
+        "actTitle": "Perilous Trail",
+        "requiredAR": 40,
+        "description": "The Chasm, which had been sealed off for a long time, is now gradually reopening. The once-abandoned place now sees visitors again.<br>However, there seem to be other secrets hidden beneath this mysterious area that has existed since ancient times.<br>For various reasons, people come here in search of answers, as they venture step by step, deep into The Chasm...",
+        "quests": [
+          "The Unexpected Guest",
+          "Chasmic Maze",
+          "Danger All Around",
+          "End of the Line (Quest)",
+          "At Tunnel's End, Light"
+        ]
+      },
+      {
+        "actNumber": "Act III",
+        "actTitle": "Inversion of Genesis",
+        "requiredAR": 40,
+        "description": "Wounded and defeated, The Balladeer has been imprisoned in Sumeru after his duel against the Traveler and the Dendro Archon.<br>Yet, no one knows how this special prisoner should pay for his many transgressions or even what to do with him after the dust has settled...",
+        "quests": [
+          "The Night-Bird Falls at the Curtain's Call",
+          "A Dance of Destruction",
+          "The Kabukimono's Finale",
+          "As Though Morning Dew"
+        ]
+      },
+      {
+        "actNumber": "Act IV",
+        "actTitle": "Paralogism",
+        "requiredAR": 40,
+        "description": "Greatness, created in the moment where miracles met life. Neither mundane knowledge nor earthly compassion could hope to reach that light.<br>The arrogant slither forth from the darkness, hypocrisy draped in virtue and reason, their gnashing maws devour all &mdash; brothers and mothers alike.",
+        "quests": [
+          "Crimes One and Two",
+          "The Hunger of Many",
+          "The Gardener"
+        ]
+      }
+    ]
+  }
+]
